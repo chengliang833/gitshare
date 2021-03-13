@@ -34,13 +34,13 @@
 				["Execute", "https://fanyi.baidu.com/?aldtype=16047#auto/zh/%clipboard%"]
 			],
 			"Name": "百度翻译",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Execute", "https://translate.google.com/?source=osdd#auto|auto|%clipboard%"]
 			],
 			"Name": "谷歌翻译(&F)",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [],
 			"Name": "",
@@ -50,25 +50,25 @@
 				["Algorithm", "b64decode", "%clipboard%"]
 			],
 			"Name": "base64解码",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Algorithm", "b64encode", "%clipboard%"]
 			],
 			"Name": "base64编码",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Algorithm", "urlencode", "%clipboard%"]
 			],
 			"Name": "urlencode",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Algorithm", "urldecode", "%clipboard%"]
 			],
 			"Name": "urldecode",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\eclipse_terminal_workspace_4cmd.bat \"%clipboard%\""]
@@ -80,7 +80,7 @@
 				["Algorithm", "cyberchef", "%clipboard%"]
 			],
 			"Name": "CyberChef(&C)",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [],
 			"Name": "",
