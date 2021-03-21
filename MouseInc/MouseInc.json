@@ -248,6 +248,9 @@
 	}, {
 		"Data": [191, 2, 193, 15, 194, 28, 195, 39, 195, 51, 195, 65, 195, 80, 195, 94, 195, 107, 195, 121, 195, 137, 195, 154, 195, 171, 195, 181, 195, 195, 195, 210, 195, 224, 195, 237, 195, 252, 195, 265, 195, 277, 195, 290, 195, 300, 195, 313, 195, 325, 195, 336, 195, 346, 195, 356, 192, 366, 191, 376, 189, 386, 180, 380, 175, 371, 170, 360, 164, 349, 158, 339, 152, 328, 148, 318, 145, 307, 141, 296, 139, 285, 136, 274, 133, 264, 130, 252, 127, 242, 125, 231, 121, 221, 117, 210, 113, 200, 109, 190, 104, 178, 98, 167, 92, 156, 88, 144, 83, 134, 79, 124, 75, 113, 70, 103, 67, 93, 63, 83, 58, 74, 52, 64, 45, 52, 39, 42, 34, 33, 28, 25, 22, 17, 17, 8, 10, 0, 17, 8, 17, 19, 17, 30, 17, 40, 17, 51, 16, 62, 14, 74, 13, 84, 13, 94, 13, 105, 13, 116, 13, 127, 13, 138, 13, 149, 13, 159, 12, 171, 11, 182, 11, 192, 11, 203, 11, 214, 11, 224, 11, 235, 11, 245, 11, 255, 11, 265, 11, 276, 11, 286, 11, 297, 10, 307, 9, 317, 6, 327, 5, 337, 3, 347, 0, 357],
 		"Sign": "LEFT-N"
+	}, {
+		"Data": [3, 0, 14, 3, 28, 5, 47, 6, 65, 8, 77, 8, 89, 9, 101, 9, 115, 10, 127, 11, 140, 11, 153, 14, 167, 15, 180, 17, 195, 19, 210, 22, 225, 23, 238, 25, 253, 26, 266, 28, 281, 28, 294, 30, 306, 30, 320, 31, 330, 31, 341, 31, 353, 31, 371, 31, 387, 31, 401, 31, 412, 31, 423, 31, 433, 31, 443, 30, 432, 30, 418, 31, 408, 32, 396, 34, 386, 35, 371, 37, 361, 38, 350, 39, 339, 40, 329, 40, 318, 41, 307, 43, 296, 44, 281, 44, 271, 45, 258, 46, 248, 46, 234, 46, 223, 47, 213, 47, 199, 47, 186, 47, 172, 47, 159, 47, 145, 47, 132, 47, 118, 47, 108, 47, 97, 47, 86, 47, 72, 47, 58, 47, 45, 47, 34, 47, 22, 47, 11, 47, 0, 48, 11, 48, 24, 50, 35, 52, 46, 52, 58, 54, 70, 55, 81, 56, 94, 56, 105, 56, 115, 56, 130, 56, 145, 56, 158, 56, 168, 56, 182, 56, 195, 56, 205, 56, 220, 56, 231, 56, 246, 58, 256, 59, 269, 59, 285, 60, 298, 60, 309, 60, 321, 60, 333, 61, 343, 62, 353, 62, 365, 62, 375, 62, 385, 64, 397, 66, 407, 67, 417, 68, 427, 70],
+		"Sign": "RIGHT-LEFT-RIGHT"
 	}],
 	"HotCorner": {
 		"BottomLeft": {
@@ -575,14 +578,91 @@
 		"IgnoreGlobal": false,
 		"List": [{
 			"Actions": [
-				["SendKeys", "SHIFT+ALT+LEFT"]
+				["SendKeys", "CTRL+ALT+LEFT"]
 			],
-			"Name": "后退",
+			"Name": "idea后退",
 			"Sign": "LEFT",
 			"Valid": true
+		}, {
+			"Actions": [
+				["SendKeys", "CTRL+ALT+RIGHT"]
+			],
+			"Name": "idea前进",
+			"Sign": "RIGHT",
+			"Valid": true
 		}],
-		"Match": ["D:\\Develop\\Install\\JetBrains\\IntelliJ IDEA 2019.2\\bin\\idea64.exe"],
+		"Match": ["idea64.exe"],
 		"Name": "idea"
+	}, {
+		"IgnoreGlobal": false,
+		"List": [{
+			"Actions": [
+				["SendKeys", "CTRL+F4"]
+			],
+			"Name": "CTRL+F4",
+			"Sign": "DOWN-LEFT",
+			"Valid": true
+		}],
+		"Match": ["idea64.exe"],
+		"Name": "CTRL+F4"
+	}, {
+		"IgnoreGlobal": false,
+		"List": [{
+			"Actions": [
+				["SendKeys", "HOME"]
+			],
+			"Name": "EXCEL左顶格",
+			"Sign": "LEFT",
+			"Valid": true
+		}, {
+			"Actions": [
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"]
+			],
+			"Name": "EXCEL右移5格",
+			"Sign": "RIGHT",
+			"Valid": true
+		}, {
+			"Actions": [
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"],
+				["SendKeys", "RIGHT"]
+			],
+			"Name": "EXCEL右移10格",
+			"Sign": "RIGHT-LEFT-RIGHT",
+			"Valid": true
+		}],
+		"Match": ["EXCEL.EXE"],
+		"Name": "excel"
+	}, {
+		"IgnoreGlobal": false,
+		"List": [{
+			"Actions": [
+				["SendKeys", "ALT+LEFT"]
+			],
+			"Name": "eclipse后退",
+			"Sign": "LEFT",
+			"Valid": true
+		}, {
+			"Actions": [
+				["SendKeys", "ALT+RIGHT"]
+			],
+			"Name": "eclipse前进",
+			"Sign": "RIGHT",
+			"Valid": true
+		}],
+		"Match": ["eclipse.exe"],
+		"Name": "eclipse"
 	}],
 	"MatchGlobal": [{
 		"Actions": [
@@ -764,7 +844,7 @@
 		"Valid": true
 	}, {
 		"Actions": [
-			["SendKeys", "CTRL+F4"]
+			["SendKeys", "CTRL+W"]
 		],
 		"Name": "关闭标签",
 		"Sign": "DOWN-LEFT",
@@ -775,7 +855,7 @@
 		],
 		"Name": "ctrl+W",
 		"Sign": "LEFT-N",
-		"Valid": true
+		"Valid": false
 	}],
 	"MouseGesture": {
 		"AddMode": false,
