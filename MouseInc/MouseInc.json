@@ -87,6 +87,12 @@
 			"Valid": false
 		}, {
 			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\int_to_hex.bat \"%clipboard%\""]
+			],
+			"Name": "intToHex",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Algorithm", "md5", "%clipboard%"]
 			],
 			"Name": "md5",
