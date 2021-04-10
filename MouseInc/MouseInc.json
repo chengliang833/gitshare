@@ -615,10 +615,11 @@
 		"IgnoreGlobal": false,
 		"List": [{
 			"Actions": [
-				["SendKeys", "HOME"]
+				["SendKeys", "F5"],
+				["SendKeys", "ENTER"]
 			],
-			"Name": "EXCEL左顶格",
-			"Sign": "LEFT",
+			"Name": "EXCEL回退",
+			"Sign": "UP-LEFT",
 			"Valid": true
 		}, {
 			"Actions": [
@@ -646,6 +647,13 @@
 			],
 			"Name": "EXCEL右移10格",
 			"Sign": "RIGHT-LEFT-RIGHT",
+			"Valid": true
+		}, {
+			"Actions": [
+				["SendKeys", "HOME"]
+			],
+			"Name": "EXCEL左顶格",
+			"Sign": "LEFT",
 			"Valid": true
 		}],
 		"Match": ["EXCEL.EXE"],
