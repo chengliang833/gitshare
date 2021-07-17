@@ -484,7 +484,7 @@
 			],
 			"Name": "关闭标签",
 			"Sign": "DOWN-LEFT",
-			"Valid": false
+			"Valid": true
 		}, {
 			"Actions": [
 				["SendKeys", "Ctrl+PgDn"]
