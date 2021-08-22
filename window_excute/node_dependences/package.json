@@ -1,0 +1,8 @@
+{
+  "name": "execute_js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "clipboardy": "2.3.0"
+  }
+}

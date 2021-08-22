@@ -71,12 +71,6 @@
 			"Valid": false
 		}, {
 			"Actions": [
-				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\eclipse_terminal_workspace_4cmd.bat \"%clipboard%\""]
-			],
-			"Name": "eclipse space terminal",
-			"Valid": true
-		}, {
-			"Actions": [
 				["Algorithm", "cyberchef", "%clipboard%"]
 			],
 			"Name": "CyberChef(&C)",
@@ -85,6 +79,12 @@
 			"Actions": [],
 			"Name": "",
 			"Valid": false
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat str_no_space"]
+			],
+			"Name": "str no space",
+			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\int_to_hex.bat \"%clipboard%\""]
@@ -96,6 +96,12 @@
 				["Algorithm", "md5", "%clipboard%"]
 			],
 			"Name": "md5",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\eclipse_terminal_workspace_4cmd.bat \"%clipboard%\""]
+			],
+			"Name": "eclipse space terminal",
 			"Valid": true
 		}, {
 			"Actions": [

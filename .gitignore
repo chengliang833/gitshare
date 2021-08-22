@@ -4,3 +4,5 @@ window_excute/bc4reset.bat
 window_excute/eclipse_svnname_mars2.bat
 window_excute/eclipse_svnname_pristine.bat
 window_excute/eclipse_svnname.bat
+window_excute/node_dependences/node_modules
+window_excute/node_dependences/package-lock.json
