@@ -81,9 +81,9 @@
 			"Valid": false
 		}, {
 			"Actions": [
-				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat str_no_space"]
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat json_no_space"]
 			],
-			"Name": "str no space",
+			"Name": "json no space",
 			"Valid": true
 		}, {
 			"Actions": [
