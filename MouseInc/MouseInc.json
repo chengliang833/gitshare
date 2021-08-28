@@ -134,6 +134,12 @@
 			"Name": "换行符n",
 			"Valid": true
 		}, {
+			"Valid": true,
+			"Name": "换行符n_any",
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_n_any_4cmd.bat \"%clipboard%\""]
+			]
+		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_rn_4cmd.bat \"%clipboard%\""]
 			],
