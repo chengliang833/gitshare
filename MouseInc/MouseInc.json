@@ -134,11 +134,11 @@
 			"Name": "换行符n",
 			"Valid": true
 		}, {
-			"Valid": true,
-			"Name": "换行符n_any",
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_n_any_4cmd.bat \"%clipboard%\""]
-			]
+			],
+			"Name": "换行符n_any",
+			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_rn_4cmd.bat \"%clipboard%\""]
@@ -581,16 +581,30 @@
 			],
 			"Name": "滚轮切换-上",
 			"Sign": "WheelSwitchUp",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["SendKeys", "Ctrl+Alt+PgDn"]
 			],
 			"Name": "滚轮切换-下",
 			"Sign": "WheelSwitchDown",
+			"Valid": false
+		}, {
+			"Actions": [
+				["SendKeys", "ALT+LEFT"]
+			],
+			"Name": "vscode后退",
+			"Sign": "LEFT",
+			"Valid": true
+		}, {
+			"Actions": [
+				["SendKeys", "ALT+RIGHT"]
+			],
+			"Name": "vscode前进",
+			"Sign": "RIGHT",
 			"Valid": true
 		}],
-		"Match": ["devenv.exe"],
+		"Match": ["Code.exe"],
 		"Name": "Visual Studio"
 	}, {
 		"IgnoreGlobal": false,
