@@ -96,7 +96,7 @@
 				["Algorithm", "md5", "%clipboard%"]
 			],
 			"Name": "md5",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\eclipse_terminal_workspace_4cmd.bat \"%clipboard%\""]
@@ -120,7 +120,7 @@
 				["Algorithm", "qrcode", "%clipboard%"]
 			],
 			"Name": "二维码",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Execute", "java -jar D:\\Develop\\work\\developfile\\window_excute\\fortest-0.0.1-SNAPSHOT-jar-with-dependencies.jar file_changewrap_n \"%clipboard%\""]
@@ -150,11 +150,24 @@
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list.bat \"%clipboard%\""]
 			],
 			"Name": "文件列表",
+			"Valid": false
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" filename"]
+			],
+			"Name": "文件列表递归_name",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" relate"]
+			],
+			"Name": "文件列表递归_relate",
 			"Valid": true
 		}],
 		"Open": true
 	},
 	"Excludes": ["Photoshop.exe"],
+	"FastPaste": null,
 	"Gestures": [{
 		"Data": [0, 100, 0, 0],
 		"Sign": "UP"
@@ -903,7 +916,10 @@
 		"DrawResult": true,
 		"DrawTrace": true,
 		"FailColor": "#CAD0D3",
+		"FontSize": null,
+		"Offset": null,
 		"Open": true,
+		"RandColor": null,
 		"RestoreEvent": false,
 		"Sensitive": 80,
 		"StartDistance": 200,
