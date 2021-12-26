@@ -123,12 +123,6 @@
 			"Valid": false
 		}, {
 			"Actions": [
-				["Execute", "java -jar D:\\Develop\\work\\developfile\\window_excute\\fortest-0.0.1-SNAPSHOT-jar-with-dependencies.jar file_changewrap_n \"%clipboard%\""]
-			],
-			"Name": "换行符n1",
-			"Valid": false
-		}, {
-			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_n_4cmd.bat \"%clipboard%\""]
 			],
 			"Name": "换行符n",
@@ -167,7 +161,7 @@
 		"Open": true
 	},
 	"Excludes": ["Photoshop.exe"],
-	"FastPaste": null,
+	"FastPaste": false,
 	"Gestures": [{
 		"Data": [0, 100, 0, 0],
 		"Sign": "UP"
