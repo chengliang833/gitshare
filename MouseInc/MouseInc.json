@@ -903,6 +903,13 @@
 		"Name": "ctrl+W",
 		"Sign": "LEFT-N",
 		"Valid": false
+	}, {
+		"Valid": true,
+		"Sign": "N",
+		"Name": "桌面列表",
+		"Actions": [
+			["SendKeys", "Win+Tab"]
+		]
 	}],
 	"MouseGesture": {
 		"AddMode": false,
