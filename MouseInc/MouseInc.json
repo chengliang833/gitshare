@@ -144,7 +144,7 @@
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list.bat \"%clipboard%\""]
 			],
 			"Name": "文件列表",
-			"Valid": false
+			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" filename"]
@@ -904,12 +904,12 @@
 		"Sign": "LEFT-N",
 		"Valid": false
 	}, {
-		"Valid": true,
-		"Sign": "N",
-		"Name": "桌面列表",
 		"Actions": [
 			["SendKeys", "Win+Tab"]
-		]
+		],
+		"Name": "桌面列表",
+		"Sign": "N",
+		"Valid": true
 	}],
 	"MouseGesture": {
 		"AddMode": false,
