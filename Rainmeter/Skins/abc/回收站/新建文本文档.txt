@@ -1,0 +1,109 @@
+;========================================
+; Windows 8 Recycle
+;========================================
+
+[Rainmeter]
+Author=Calvin Gentry
+BackgroundMode=2
+SolidColor=0,0,0,1
+BackgroundMargins=10,10,10,10
+
+;Metadata added by RainBrowser
+;http://rainmeter.net/RainCMS/?q=Rainmeter101_AnatomyOfASkin
+
+[Metadata]
+Name=
+Config=
+Description=
+Instructions=
+Version=
+Tags=
+License=
+Variant=
+Preview=
+
+;End of added Metadata
+
+[MeasureBin]
+Measure=Plugin
+Plugin=RecycleManager.dll
+Drives=ALL
+RecycleType=COUNT
+Substitute="0":""
+
+[MeasureSize]
+Measure=Plugin
+Plugin=RecycleManager.dll
+Drives=ALL
+RecycleType=SIZE
+
+[RecycleEmpty]
+Meter=IMAGE
+X=0
+Y=0
+W=83
+H=81
+ImageName=recycle1.png
+AntiAlias=1
+LeftMouseDownAction=!Execute [!RainmeterShowMeter RecycleEmptyActive][!RainmeterHideMeter RecycleEmpty][!RainmeterRedraw]
+
+[RecycleEmptyActive]
+Meter=IMAGE
+X=0
+Y=0
+W=83
+H=81
+ImageName=recycle1.png
+AntiAlias=1
+LeftMouseUpAction=!Execute [!RainmeterPluginBang "MeasureBin OpenBin"][!RainmeterShowMeter RecycleEmpty][!RainmeterHideMeter RecycleEmptyActive][!RainmeterRedraw]
+Hidden=1
+
+[RecycleFull]
+Meter=IMAGE
+X=0
+Y=0
+W=83
+H=81
+ImageName=recycle.png
+AntiAlias=1
+LeftMouseDownAction=!Execute [!RainmeterShowMeter RecycleFullActive][!RainmeterHideMeter RecycleFull][!RainmeterRedraw]
+Hidden=1
+RightMouseDownAction=!RainmeterPluginBang "MeasureBin EmptyBin"
+
+[RecycleFullActive]
+Meter=IMAGE
+X=0
+Y=0
+W=83
+H=81
+ImageName=recycle.png
+AntiAlias=1
+LeftMouseUpAction=!Execute [!RainmeterPluginBang "MeasureBin OpenBin"][!RainmeterShowMeter RecycleFull][!RainmeterHideMeter RecycleFullActive][!RainmeterRedraw]
+Hidden=1
+RightMouseDownAction=!RainmeterPluginBang "MeasureBin EmptyBin"
+
+
+[RecycleAction]
+Measure=Calc
+Formula=MeasureBin
+IfAboveAction=!Execute [!RainmeterHideMeter RecycleEmpty][!RainmeterShowMeter RecycleFull]
+IfAboveValue=0
+IfEqualAction=!Execute [!RainmeterHideMeter RecycleFull][!RainmeterShowMeter RecycleEmpty]
+IfEqualValue=0
+
+[RecycleItem]
+Meter=STRING
+MeasureName=MeasureBin
+X=16
+Y=12
+W=25
+H=25
+FontColor=128,0,128,
+FontSize=8
+AntiAlias=1
+FontFace=Neuropol
+StringStyle=bold
+StringAlign=CENTER
+DynamicVariables=1
+Text=
+
