@@ -2,7 +2,7 @@
   - [基本命令](#基本命令)
     - [更新jar包文件](#更新jar包文件)
     - [tar zip](#tar-zip)
-    - [ftp sftp远程连接](#ftp-sftp远程连接)
+    - [ftp sftp远程连接 vsftp部署](#ftp-sftp远程连接-vsftp部署)
     - [linux时区](#linux时区)
     - [ssh远程连接](#ssh远程连接)
     - [清理进程占用文件](#清理进程占用文件)
@@ -60,9 +60,9 @@
     - [项目单独配置仓库](#项目单独配置仓库)
   - [数据库](#数据库)
     - [oracle](#oracle)
-      - [oracle->mysql文件结构转换](#oracle-mysql文件结构转换)
+      - [oracle-\>mysql文件结构转换](#oracle-mysql文件结构转换)
       - [客户端](#客户端)
-    - [mysql group_concat 最大长度](#mysql-group_concat-最大长度)
+    - [mysql group\_concat 最大长度](#mysql-group_concat-最大长度)
     - [mysql查询数据库引擎](#mysql查询数据库引擎)
     - [mysql修改时区](#mysql修改时区)
     - [mysql连接数](#mysql连接数)
@@ -99,6 +99,9 @@
       - [docker启动gitlab](#docker启动gitlab)
       - [docker安装iredmail](#docker安装iredmail)
       - [docker 安装v2ray](#docker-安装v2ray)
+      - [docker安装nacos](#docker安装nacos)
+      - [docker安装metabase](#docker安装metabase)
+      - [docker安装sentinel](#docker安装sentinel)
   - [代码开发相关](#代码开发相关)
     - [小于等于转义](#小于等于转义)
     - [微信公众号code跳转](#微信公众号code跳转)
@@ -146,7 +149,7 @@ cat 20210423.tar.gz* > 20210423.tar.gz
 cat 20210423.tar.gz* | tar -zxv
 ```
 
-### ftp sftp远程连接
+### ftp sftp远程连接 vsftp部署
 ```
 sftp -oPort=22 admin@host
 ->password
@@ -170,6 +173,8 @@ binary
 mget oracle-instantclient-sqlplus-21.1.0.0.0-1.x86_64.rpm
 bye
 EOF
+
+vsftp自定义 secret/system_script:/etc/vsftpd/vsftpd.conf
 ```
 
 ### linux时区
@@ -687,7 +692,7 @@ docker search
 docker pull
 docker rmi hub.c.163.com/library/tomcat:9.0
 docker rm dtomcat
-//添加dockerfile到本地镜像 最后的.表示当前路径
+//添加dockerfile到本地镜像 最后的.表示Dockerfile执行相对路径(若Dockerfile内存在相对路径)
 docker build -t ulane/notify:1.0 .
 ```
 
@@ -711,8 +716,16 @@ docker import tomcat-jenkins-2.244.tar tomcat-jenkins:2.244
 ```
 
 ### docker修改提交镜像并发布
-docker commit -m="tomcat with jenkins 2.258" -a="ulane" 8e1378963558 eshonulane/tomcat-jenkins:9.2.258<br/>
+```
+docker cp /data/docker_link/tomcat/conf/server.xml tomcat:/usr/local/tomcat/conf/server.xml
+docker cp /data/docker_link/tomcat/firstPrj tomcat:/usr/local/tomcat/firstPrj
+docker cp /data/docker_link/jenkinshome tomcat:/root/.jenkins
+
+docker commit -m="tomcat with jenkins 2.258" -a="ulane" 8e1378963558 eshonulane/tomcat-jenkins:9.2.258
+docker commit -m="tomcat 9.0.35-jdk11 with jenkins 2.375.1" -a="ulane" 8ff96d72f2a7 eshonulane/tomcat-jenkins:9.0.35_11_2.375.1
+docker login
 docker push eshonulane/tomcat-jenkins:9.2.258
+```
 
 ### docker修改容器参数
 docker update --restart=always dmysql  //no<br/>
@@ -764,7 +777,7 @@ docker run -itd -p 6379:6379 \
 #### docker安装mongodb
 ```
 docker run -itd -p 27017:27017 \
---name mongo mongo:4.0.20-xenial --auth
+--name mongo mongo:4.4 --auth
 docker exec -it mongo mongo admin
 db.createUser({ user:'admin',pwd:'a0123456',roles:[ { role:'userAdminAnyDatabase', db: 'admin'},"readWriteAnyDatabase"]});
 db.auth("admin","a0123456");
@@ -1000,6 +1013,50 @@ docker run \
 docker run -d -p 8888:80 \
 -v /root/docker_link/v2ray/v2ray:/etc/v2ray \
 --name v2ray v2ray/official v2ray -config=/root/docker_link/v2ray/v2ray/config.json
+```
+
+#### docker安装nacos
+```
+mkdir -p /data/docker_link/nacos/init.d /data/docker_link/nacos/logs
+touch /data/docker_link/nacos/init.d/custom.properties
+文件写入：
+management.endpoints.web.exposure.include=*
+//echo 'management.endpoints.web.exposure.include=*' > /data/docker_link/nacos/init.d/custom.properties
+
+docker run -d -p 8848:8848  \
+-e MODE=standalone \
+-e PREFER_HOST_MODE=hostname \
+-e SPRING_DATASOURCE_PLATFORM=mysql \
+-e MYSQL_SERVICE_HOST=hostname \
+-e MYSQL_SERVICE_PORT=port \
+-e MYSQL_SERVICE_DB_NAME=nacos_config \
+-e MYSQL_SERVICE_USER=username \
+-e MYSQL_SERVICE_PASSWORD=password \
+-e MYSQL_DATABASE_NUM=1 \
+-v /data/docker_link/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties \
+-v /data/docker_link/nacos/logs:/home/nacos/logs \
+--name nacos nacos/nacos-server:1.4.2
+
+docker run -d -p 8848:8848 -p 9848:9848 -p 9849:9849 \
+-e MODE=standalone \
+-e PREFER_HOST_MODE=hostname \
+-e NACOS_AUTH_CACHE_ENABLE=true \
+--name nacos nacos/nacos-server:v2.1.2
+
+开启权限验证：新增一行
+nacos.core.auth.enabled=true
+```
+
+#### docker安装metabase
+```
+docker pull metabase/metabase:v0.45.2.1
+docker run -d -p 3000:3000 --name metabase metabase/metabase:v0.45.2.1
+```
+
+#### docker安装sentinel
+```
+docker pull bladex/sentinel-dashboard:1.8.0
+docker run -d -p 8858:8858 --name sentinel bladex/sentinel-dashboard:1.8.0
 ```
 
 ## 代码开发相关
