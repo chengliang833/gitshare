@@ -120,7 +120,7 @@
 				["Algorithm", "qrcode", "%clipboard%"]
 			],
 			"Name": "二维码",
-			"Valid": false
+			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_n_4cmd.bat \"%clipboard%\""]
@@ -370,7 +370,7 @@
 	"KeySoundIndex": 0,
 	"Keycast": {
 		"BackgroundColor": "#353535",
-		"Fade": 5,
+		"Fade": 1,
 		"FontSize": 32,
 		"IgnoreSingle": false,
 		"Open": false,
@@ -929,6 +929,9 @@
 		"TraceWidth": 3,
 		"WheelSwitch": true
 	},
+	"OcrService": 0,
+	"QuickJump": null,
+	"ShowIme": null,
 	"ShowTrayIcon": true,
 	"VolumeControlSound": false,
 	"VolumeSoundIndex": 0,

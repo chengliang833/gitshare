@@ -67,6 +67,8 @@
       - [eclipse搜索非日志文件](#eclipse搜索非日志文件)
       - [eclipse常用快捷键](#eclipse常用快捷键)
       - [eclipse导入关联项目](#eclipse导入关联项目)
+      - [eclipse插件Easy Console Grepper](#eclipse插件easy-console-grepper)
+      - [eclipse搜索排除指定目录](#eclipse搜索排除指定目录)
     - [idea](#idea)
       - [idea打开始终选择项目](#idea打开始终选择项目)
       - [idea大小写不敏感](#idea大小写不敏感)
@@ -77,6 +79,7 @@
       - [配置aspectj编译](#配置aspectj编译)
       - [查看所有关联类](#查看所有关联类)
       - [tomcat打印语言](#tomcat打印语言)
+      - [默认不展开方法体](#默认不展开方法体)
     - [vscode](#vscode)
       - [滚动一页](#滚动一页)
       - [全选相似字段](#全选相似字段)
@@ -105,6 +108,8 @@
       - [备份位置](#备份位置)
     - [office](#office-1)
       - [正则宏替换](#正则宏替换)
+    - [nodejs](#nodejs)
+      - [npmOpenSSL3.0解除限制](#npmopenssl30解除限制)
 
 # notebook
 ## windows
@@ -206,8 +211,13 @@ ctrl + alt + num+ 开始自定义快捷键(单击位置设置)
 ```
 1. win+R regidit
     计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
-2. win10 - 任务计划程序
-    创建任务 - 可选最高权限(管理员运行) - 触发器当任何用户登录时 - 操作关联启动文件(exe,bat)
+2. win10 - 任务计划程序（禁用自动更新）
+    创建任务
+    常规 - 不管用户是否登录都要运行，可选使用最高权限(管理员运行)
+    触发器 - 在系统启动时，在锁定任何用户的工作站时，在解锁任何用户的工作站时
+    操作 - 关联启动文件(exe,bat)
+    条件 - 电源 - 取消勾选只有计算机使用交流电才启动，勾选唤醒计算机运行此任务
+    设置 - 勾选如果过了计划时间立即启动
 ```
 
 ### WiFi管理
@@ -470,6 +480,16 @@ ctrl + shift + g 查看方法在哪里被引用
 #### eclipse导入关联项目
 批量导入有时无法初始化为maven项目，删除重新单个导入，初始化为maven格式后会自动关联
 
+#### eclipse插件Easy Console Grepper
+```
+http://jepfa.de/updatesites/ecg/repository
+(\[JSConsole print:\])|(\[JSFunction init\])
+```
+
+#### eclipse搜索排除指定目录
+```
+右键项目 properties||resource||resource filter||add filter
+```
 
 ### idea
 #### idea打开始终选择项目
@@ -521,6 +541,12 @@ ctrl+alt B
 不添加值，默认英文
 -Duser.language=en
 logback.xml编码改为GBK
+```
+
+#### 默认不展开方法体
+```
+Editor||General||Code Folding 勾选 Method bodies
+配合ctrl shift - 和 ctrl shift = 手动折叠和展开
 ```
 
 ### vscode
@@ -720,3 +746,11 @@ Private Sub RegExp_Replace()
 
 End Sub
 ```
+
+### nodejs
+#### npmOpenSSL3.0解除限制
+```
+运行命令前设置
+set NODE_OPTIONS=--openssl-legacy-provider
+```
+
