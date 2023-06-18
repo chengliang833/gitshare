@@ -3,8 +3,6 @@
     - [xshell自动更新位置](#xshell自动更新位置)
     - [docker初始化(不用，直接本地上虚拟机)](#docker初始化不用直接本地上虚拟机)
     - [锁频壁纸位置](#锁频壁纸位置)
-    - [npm阿里镜像](#npm阿里镜像)
-    - [node执行js命令全局模块配置](#node执行js命令全局模块配置)
     - [IP查计算机名](#ip查计算机名)
     - [ping各个网络](#ping各个网络)
     - [B7在E2到E240的出现次数](#b7在e2到e240的出现次数)
@@ -110,6 +108,8 @@
       - [正则宏替换](#正则宏替换)
     - [nodejs](#nodejs)
       - [npmOpenSSL3.0解除限制](#npmopenssl30解除限制)
+      - [npm阿里镜像](#npm阿里镜像)
+      - [node执行js命令全局模块配置](#node执行js命令全局模块配置)
 
 # notebook
 ## windows
@@ -125,19 +125,6 @@ docker-machine env default
 
 ### 锁频壁纸位置
 C:\Users\eshonulane\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
-
-### npm阿里镜像
-npm install --registry=http://registry.npm.taobao.org<br/>
-npm install node-sass --registry=http://registry.npm.taobao.org<br/>
-npm config set registry https://registry.npm.taobao.org<br/>
-
-### node执行js命令全局模块配置
-```
-//设置环境变量
-NODE_PATH=C:\Users\eshonulane\AppData\Roaming\npm\node_modules
-//mouseInc不支持读取系统变量，每次cmd直接执行
-set NODE_PATH=C:\Users\Administrator\AppData\Roaming\npm\node_modules
-```
 
 ### IP查计算机名
 nbtstat -a 192.168.0.100
@@ -365,8 +352,8 @@ http://www.google.com/dl/release2/chrome/ANgMaZuTFP5u7kDbYxrbLJ4_86.0.4240.183/8
 ```
 
 #### 谷歌插件位置(注意刷新)
-C:\Users\eshonulane\AppData\Local\Google\Chrome\User Data\Default\Extensions
-C:\Users\eshonulane\AppData\Local\Google\Chrome\User Data\Profile 1\Extensions
+C:\Users\Ulane\AppData\Local\Google\Chrome\User Data\Default\Extensions
+C:\Users\Ulane\AppData\Local\Google\Chrome\User Data\Profile 1\Extensions
 
 #### 谷歌接口调试model重置
 ```
@@ -752,5 +739,18 @@ End Sub
 ```
 运行命令前设置
 set NODE_OPTIONS=--openssl-legacy-provider
+```
+
+#### npm阿里镜像
+npm install --registry=http://registry.npm.taobao.org<br/>
+npm install node-sass --registry=http://registry.npm.taobao.org<br/>
+npm config set registry https://registry.npm.taobao.org<br/>
+
+#### node执行js命令全局模块配置
+```
+//设置环境变量
+NODE_PATH=C:\Users\eshonulane\AppData\Roaming\npm\node_modules
+//mouseInc不支持读取系统变量，每次cmd直接执行
+set NODE_PATH=C:\Users\Administrator\AppData\Roaming\npm\node_modules
 ```
 
