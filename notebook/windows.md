@@ -198,6 +198,7 @@ ctrl + alt + num+ 开始自定义快捷键(单击位置设置)
 ```
 1. win+R regidit
     计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+    如果win+R打不开时可直接打开 C:\Windows\regedit.exe
 2. win10 - 任务计划程序（禁用自动更新）
     创建任务
     常规 - 不管用户是否登录都要运行，可选使用最高权限(管理员运行)

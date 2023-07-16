@@ -10,13 +10,7 @@
 				["SetClipboard", "%clipboard%"]
 			],
 			"Name": "cancel",
-			"Valid": true
-		}, {
-			"Actions": [
-				["Execute", "explorer \"%clipboard%\""]
-			],
-			"Name": "explorer",
-			"Valid": true
+			"Valid": false
 		}, {
 			"Actions": [
 				["Execute", "https://www.baidu.com/s?ie=UTF-8&wd=%clipboard%"]
@@ -40,10 +34,6 @@
 				["Execute", "https://translate.google.com/?source=osdd#auto|auto|%clipboard%"]
 			],
 			"Name": "谷歌翻译(&F)",
-			"Valid": false
-		}, {
-			"Actions": [],
-			"Name": "",
 			"Valid": false
 		}, {
 			"Actions": [
@@ -76,20 +66,32 @@
 			"Name": "CyberChef(&C)",
 			"Valid": false
 		}, {
-			"Actions": [],
-			"Name": "",
-			"Valid": false
-		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat json_no_space"]
 			],
-			"Name": "json no space",
+			"Name": "json去除空格换行",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat to_camel_case"]
+			],
+			"Name": "转驼峰命名",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat to_underline_case"]
+			],
+			"Name": "转下划线命名",
 			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\int_to_hex.bat \"%clipboard%\""]
 			],
-			"Name": "intToHex",
+			"Name": "int转十六进制",
+			"Valid": true
+		}, {
+			"Actions": [],
+			"Name": "文本转换",
 			"Valid": true
 		}, {
 			"Actions": [
@@ -97,12 +99,6 @@
 			],
 			"Name": "md5",
 			"Valid": false
-		}, {
-			"Actions": [
-				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\eclipse_terminal_workspace_4cmd.bat \"%clipboard%\""]
-			],
-			"Name": "eclipse space terminal",
-			"Valid": true
 		}, {
 			"Actions": [
 				["Algorithm", "sha1", "%clipboard%"]
@@ -117,27 +113,25 @@
 			"Valid": false
 		}, {
 			"Actions": [
-				["Algorithm", "qrcode", "%clipboard%"]
-			],
-			"Name": "二维码",
-			"Valid": true
-		}, {
-			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_n_4cmd.bat \"%clipboard%\""]
 			],
-			"Name": "换行符n",
+			"Name": "换行符r_rn转n",
 			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_n_any_4cmd.bat \"%clipboard%\""]
 			],
-			"Name": "换行符n_any",
+			"Name": "换行符r_rn转n_所有类型文件",
 			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\changewrap_rn_4cmd.bat \"%clipboard%\""]
 			],
-			"Name": "换行符rn",
+			"Name": "换行符r_n转rn",
+			"Valid": true
+		}, {
+			"Actions": [],
+			"Name": "换行符",
 			"Valid": true
 		}, {
 			"Actions": [
@@ -149,13 +143,35 @@
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" filename"]
 			],
-			"Name": "文件列表递归_name",
+			"Name": "文件列表递归_文件名",
 			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" relate"]
 			],
-			"Name": "文件列表递归_relate",
+			"Name": "文件列表递归_相对路径",
+			"Valid": true
+		}, {
+			"Actions": [],
+			"Name": "文件",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "explorer \"%clipboard%\""]
+			],
+			"Name": "文件资源管理器",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Algorithm", "qrcode", "%clipboard%"]
+			],
+			"Name": "二维码",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\eclipse_terminal_workspace_4cmd.bat \"%clipboard%\""]
+			],
+			"Name": "eclipse工作空间清理terminal",
 			"Valid": true
 		}],
 		"Open": true
@@ -710,6 +726,18 @@
 		}],
 		"Match": ["eclipse.exe"],
 		"Name": "eclipse"
+	}, {
+		"IgnoreGlobal": false,
+		"List": [{
+			"Actions": [
+				["SendKeys", "ALT+F4"]
+			],
+			"Name": "ALT+F4",
+			"Sign": "DOWN-LEFT",
+			"Valid": true
+		}],
+		"Match": ["notepad.exe"],
+		"Name": "ALT+F4"
 	}],
 	"MatchGlobal": [{
 		"Actions": [
