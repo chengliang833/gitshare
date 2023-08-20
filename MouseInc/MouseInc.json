@@ -67,12 +67,6 @@
 			"Valid": false
 		}, {
 			"Actions": [
-				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat json_no_space"]
-			],
-			"Name": "json去除空格换行",
-			"Valid": true
-		}, {
-			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat to_camel_case"]
 			],
 			"Name": "转驼峰命名",
@@ -83,6 +77,18 @@
 			],
 			"Name": "转下划线命名",
 			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat json_no_space"]
+			],
+			"Name": "json去除空格换行",
+			"Valid": true
+		}, {
+			"Valid": true,
+			"Name": "去除换行及前后空格",
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat str_no_space"]
+			]
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\int_to_hex.bat \"%clipboard%\""]
@@ -627,8 +633,8 @@
 			"Sign": "RIGHT",
 			"Valid": true
 		}],
-		"Match": ["Code.exe"],
-		"Name": "Visual Studio"
+		"Match": ["Code.exe", "HBuilderX.exe"],
+		"Name": "VS Code_HBuilder"
 	}, {
 		"IgnoreGlobal": false,
 		"List": [{

@@ -1,4 +1,4 @@
-- [notebook](#notebook)
+﻿- [notebook](#notebook)
   - [windows](#windows)
     - [xshell自动更新位置](#xshell自动更新位置)
     - [docker初始化(不用，直接本地上虚拟机)](#docker初始化不用直接本地上虚拟机)
@@ -527,8 +527,12 @@ ctrl+alt B
 #### tomcat打印语言
 ```
 不添加值，默认英文
--Duser.language=en
-logback.xml编码改为GBK
+-Duser.language=en //可改tomcat的展示语言
+-Dfile.encoding=UTF-8 //可改文件中返回给前端的文本编码(跟随文件的编码)
+logback.xml编码改为GBK //可改自己日志中打印的文本编码(跟随项目设置或者系统的编码)
+
+//返回值和控制台乱码调整
+//settings||editor||file encodings 编码都改为utf-8
 ```
 
 #### 默认不展开方法体

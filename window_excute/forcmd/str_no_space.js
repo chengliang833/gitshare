@@ -1,3 +1,5 @@
+//字符串去除空格换行
+
 //不通过bat无法pause
 //已有package.json直接npm install即可
 //或单独npm install clipboardy
@@ -7,7 +9,7 @@ const clipboardy = require('clipboardy');
 var str = clipboardy.readSync();
 // console.log(str);
 if (str) {
-  resultStr = str.replace(/\s*/g, "");
+  resultStr = str.replace(/[ 	]*(\r|\n)+[ 	]*/g, "");
 }else{
   resultStr = "no input";
 }

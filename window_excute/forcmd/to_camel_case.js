@@ -1,3 +1,5 @@
+//下划线转驼峰命名
+
 //不通过bat无法pause
 //已有package.json直接npm install即可
 //或单独npm install clipboardy
