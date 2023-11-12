@@ -47,6 +47,7 @@
       - [谷歌禁止自动更新](#谷歌禁止自动更新)
       - [谷歌插件位置(注意刷新)](#谷歌插件位置注意刷新)
       - [谷歌接口调试model重置](#谷歌接口调试model重置)
+      - [谷歌指定旧版本并指定用户目录打开](#谷歌指定旧版本并指定用户目录打开)
     - [qq邮箱关联outlook](#qq邮箱关联outlook)
     - [oracle](#oracle)
       - [sqlplus命令行操作](#sqlplus命令行操作)
@@ -360,6 +361,9 @@ C:\Users\Ulane\AppData\Local\Google\Chrome\User Data\Profile 1\Extensions
 ```
 moduleDiv = "<div class='panel panel-info no-radius b0 mt0 left-menu-border-top'>";	moduleDiv += "      <div class='panel-heading no-radius rel' data-parent='#modules'>";	moduleDiv += "          <div class='cursor collapsed' data-toggle='collapse' data-parent='#modules' href='#panel_ca_moduleId' crap-data='ca_moduleId' aria-expanded='false'>";	moduleDiv += "              <i class='iconfont module-title-ico f16'>&#xe624;</i>&nbsp;&nbsp;  ca_moduleName";	moduleDiv += "		        <span class='more'>";	moduleDiv += "			        <i class='iconfont fr h lh40'>&#xe75f;</i>";	moduleDiv += "			        <span class='t0 h'><i class='iconfont interface-menu rename-module mt0 lh40 fr'crap-data='ca_moduleId'>&#xe69e;</i></span>";	moduleDiv += "	                <span class='t0 h'><i class='iconfont interface-menu delete-module mt0 lh40 fr' crap-data='ca_moduleId'>&#xe69d;</i></span>";	moduleDiv += "			        <span class='t0 h'><i class='iconfont interface-menu down-module  mt0 lh40 fr' crap-data='ca_moduleId'>&#xe65e;</i></span>";	moduleDiv += "			        <span class='t0 h'><i class='iconfont interface-menu up-module  mt0 lh40 fr' crap-data='ca_moduleId'>&#xe8e9;</i></span>";	moduleDiv += "		        </span>";	moduleDiv += "          </div>";	moduleDiv += "      </div>";	moduleDiv += "      <div id='panel_ca_moduleId' class='panel-collapse BGEEE collapse' aria-expanded='false' style='height: 0px;'>";	moduleDiv += "          <div class='panel-body b0 p0'>";	moduleDiv += "              ca_interfaces";	moduleDiv += "           </div>";	moduleDiv += "       </div>";	moduleDiv += "   </div>";
 ```
+
+#### 谷歌指定旧版本并指定用户目录打开
+快捷方式 "D:\Install_Internet\chrome\Chrome-bin\chrome.exe" --user-data-dir="C:\Users\Ulane\AppData\Local\Google\Chrome\User Data_v86" --remote-debugging-port=9223
 
 
 ### qq邮箱关联outlook

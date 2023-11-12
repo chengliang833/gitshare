@@ -84,11 +84,11 @@
 			"Name": "json去除空格换行",
 			"Valid": true
 		}, {
-			"Valid": true,
-			"Name": "去除换行及前后空格",
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat str_no_space"]
-			]
+			],
+			"Name": "去除换行及前后空格",
+			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\int_to_hex.bat \"%clipboard%\""]
@@ -156,6 +156,18 @@
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" relate"]
 			],
 			"Name": "文件列表递归_相对路径",
+			"Valid": true
+		}, {
+			"Valid": true,
+			"Name": "文件列表_复制",
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_copy.bat"]
+			]
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\image_to_base64.bat \"%clipboard%\""]
+			],
+			"Name": "图片转base64",
 			"Valid": true
 		}, {
 			"Actions": [],

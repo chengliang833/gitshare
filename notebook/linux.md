@@ -1,4 +1,4 @@
-- [notebook-linux](#notebook-linux)
+﻿- [notebook-linux](#notebook-linux)
   - [基本命令](#基本命令)
     - [更新jar包文件](#更新jar包文件)
     - [tar zip](#tar-zip)
@@ -36,6 +36,7 @@
     - [linux关闭服务](#linux关闭服务)
       - [25端口postfix关闭](#25端口postfix关闭)
       - [cups关闭](#cups关闭)
+      - [rpcbind关闭](#rpcbind关闭)
   - [git](#git)
     - [gitlab安装](#gitlab安装)
     - [git更新覆盖本地](#git更新覆盖本地)
@@ -255,7 +256,7 @@ systemctl list-dependencies [target]
 
 ### https openssl生成证书
 ```
-openssl req -new -x509 -newkey rsa:2048 -keyout CA.key -out CA.pem
+openssl req -new -x509 -newkey rsa:2048 -keyout CA.key -out CA.cert
 openssl rsa -in CA.key  -out CA_no_pwd.key
 ```
 
@@ -415,6 +416,12 @@ chkconfig postfix off
 ```
 service cups stop
 chmod 000 /usr/sbin/cupsd
+```
+
+#### rpcbind关闭
+```
+service rpcbind stop
+chkconfig rpcbind off
 ```
 
 
@@ -612,6 +619,7 @@ begin; commit;
 ```
 mysqldump --debug-info -uroot -proot@123#@! test tablename | mysql -h 211.159.185.18 -P3306 -C -uroot -p0123456 test
 mysqldump -uroot -p'root@135%^&' novel_plus > /home/novel_plus_bk0905.sql
+use databasename;
 source novel_plus_bk0905
 ```
 
@@ -826,10 +834,10 @@ alter user ulane identified by abc;
 ```
 docker run -itd -p 3306:3306 -e TZ=Asia/Shanghai -e MYSQL_ROOT_PASSWORD='password' \
 --privileged=true \
--v /root/docker_link/mysql/conf/mysql.cnf:/etc/mysql/conf.d/mysql.cnf \
--v /root/docker_link/mysql/logs:/var/log \
--v /root/docker_link/mysql/data:/var/lib/mysql \
---restart always --name mysql mysql:5.6
+-v /data/docker_link/mysql/conf/mysql.cnf:/etc/mysql/conf.d/mysql.cnf \
+-v /data/docker_link/mysql/logs:/var/log \
+-v /data/docker_link/mysql/data:/var/lib/mysql \
+--restart always --name mysql mysql:5.7.43
 
 docker run -itd -p 3308:3306 -e TZ=Asia/Shanghai -e MYSQL_ROOT_PASSWORD='password' \
 -v /root/docker_link/mysqlslave/conf/mysql.cnf:/etc/mysql/conf.d/mysql.cnf \

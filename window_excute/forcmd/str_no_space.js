@@ -9,7 +9,7 @@ const clipboardy = require('clipboardy');
 var str = clipboardy.readSync();
 // console.log(str);
 if (str) {
-  resultStr = str.replace(/[ 	]*(\r|\n)+[ 	]*/g, "");
+  resultStr = str.replace(/[ 	]*(\r|\n)+[ 	]*/g, " ").replaceAll("	", " ");//这里是	tab
 }else{
   resultStr = "no input";
 }
