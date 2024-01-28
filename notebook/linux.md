@@ -14,7 +14,6 @@
     - [软链接到文件目录, 硬链接去掉-s](#软链接到文件目录-硬链接去掉-s)
     - [vi操作](#vi操作)
     - [清除文件内容](#清除文件内容)
-    - [服务关闭开机自启](#服务关闭开机自启)
     - [https openssl生成证书](#https-openssl生成证书)
     - [linux定时任务](#linux定时任务)
     - [linux删除7分钟之前的日志](#linux删除7分钟之前的日志)
@@ -34,9 +33,11 @@
     - [linux改host](#linux改host)
     - [linux改换行符](#linux改换行符)
     - [linux关闭服务](#linux关闭服务)
+      - [服务关闭开机自启](#服务关闭开机自启)
       - [25端口postfix关闭](#25端口postfix关闭)
       - [cups关闭](#cups关闭)
       - [rpcbind关闭](#rpcbind关闭)
+      - [dnsmasq关闭](#dnsmasq关闭)
   - [git](#git)
     - [gitlab安装](#gitlab安装)
     - [git更新覆盖本地](#git更新覆盖本地)
@@ -63,6 +64,7 @@
     - [oracle](#oracle)
       - [oracle-\>mysql文件结构转换](#oracle-mysql文件结构转换)
       - [客户端](#客户端)
+    - [执行脚本](#执行脚本)
     - [mysql group\_concat 最大长度](#mysql-group_concat-最大长度)
     - [mysql查询数据库引擎](#mysql查询数据库引擎)
     - [mysql修改时区](#mysql修改时区)
@@ -103,10 +105,13 @@
       - [docker安装nacos](#docker安装nacos)
       - [docker安装metabase](#docker安装metabase)
       - [docker安装sentinel](#docker安装sentinel)
+      - [docker安装zipkin](#docker安装zipkin)
   - [代码开发相关](#代码开发相关)
     - [小于等于转义](#小于等于转义)
     - [微信公众号code跳转](#微信公众号code跳转)
     - [base64图片](#base64图片)
+  - [前端](#前端)
+    - [el-tooltip有时不显示](#el-tooltip有时不显示)
   - [eclipse](#eclipse)
     - [eclipse布局](#eclipse布局)
     - [svn](#svn)
@@ -245,14 +250,6 @@ V选中范围 :s/旧文本/新文本/g
 ```
 ### 清除文件内容
 \> filename
-
-### 服务关闭开机自启
-```
-chkconfig --list
-chkconfig qemukvmga off
-systemctl list-unit-files
-systemctl list-dependencies [target]
-```
 
 ### https openssl生成证书
 ```
@@ -408,6 +405,15 @@ sed -i 's/\r$//' filename.sh
 ```
 
 ### linux关闭服务
+
+#### 服务关闭开机自启
+```
+chkconfig --list
+chkconfig qemukvmga off
+systemctl list-unit-files
+systemctl list-dependencies [target]
+```
+
 #### 25端口postfix关闭
 service postfix stop<br/>
 chkconfig postfix off
@@ -415,6 +421,7 @@ chkconfig postfix off
 #### cups关闭
 ```
 service cups stop
+chkconfig cups off
 chmod 000 /usr/sbin/cupsd
 ```
 
@@ -424,6 +431,12 @@ service rpcbind stop
 chkconfig rpcbind off
 ```
 
+#### dnsmasq关闭
+```
+service dnsmasq stop
+chkconfig dnsmasq off
+reboot
+```
 
 
 ## git
@@ -577,6 +590,19 @@ install -m 755 -o root -g root instantclient_21_1/libomsodm.so /usr/lib/oracle/2
 export ORACLE_HOME=/usr/lib/oracle/21/client64
 export PATH=$ORACLE_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
+```
+
+### 执行脚本
+```
+//oracle
+spool data.log
+@data.sql
+spool off
+
+//msyql
+tee data.log
+source data.sql
+notee
 ```
 
 ### mysql group_concat 最大长度
@@ -1050,6 +1076,8 @@ docker run -d -p 8848:8848 -p 9848:9848 -p 9849:9849 \
 -e PREFER_HOST_MODE=hostname \
 -e NACOS_AUTH_CACHE_ENABLE=true \
 --name nacos nacos/nacos-server:v2.1.2
+//多网卡初始创建时可能出现数据库加载失败，是由于首次加载数据库未初始化就被访问，稍后重启即可
+//或设置-Ddb.pool.config.connectionTimeout=60000
 
 开启权限验证：新增一行
 nacos.core.auth.enabled=true
@@ -1067,6 +1095,12 @@ docker pull bladex/sentinel-dashboard:1.8.0
 docker run -d -p 8858:8858 --name sentinel bladex/sentinel-dashboard:1.8.0
 ```
 
+#### docker安装zipkin
+```
+docker pull openzipkin/zipkin:3.0.4
+docker run -d -p 9411:9411 --name zipkin openzipkin/zipkin:3.0.4
+```
+
 ## 代码开发相关
 ### 小于等于转义
 <![CDATA[ <= ]]><br/>
@@ -1079,6 +1113,11 @@ https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx663fee511c625a07&res
 ```
 <img src="data:image/jpg;base64," />
 ```
+
+## 前端
+### el-tooltip有时不显示
+元素内部必须有元素，div或i，纯文本有可能也不显示
+
 
 ## eclipse
 ### eclipse布局

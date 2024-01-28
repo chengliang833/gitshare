@@ -67,6 +67,18 @@
 			"Valid": false
 		}, {
 			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js_one_line.bat to_camel_case \"%clipboard%\""]
+			],
+			"Name": "转驼峰命名_单行",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js_one_line.bat to_underline_case \"%clipboard%\""]
+			],
+			"Name": "转下划线命名_单行",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat to_camel_case"]
 			],
 			"Name": "转驼峰命名",
@@ -91,9 +103,21 @@
 			"Valid": true
 		}, {
 			"Actions": [
-				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\int_to_hex.bat \"%clipboard%\""]
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat html_to_text"]
 			],
-			"Name": "int转十六进制",
+			"Name": "html获取纯文本",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\long_convert.bat long_to_hex \"%clipboard%\""]
+			],
+			"Name": "long转十六进制",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\long_convert.bat long_to_bina \"%clipboard%\""]
+			],
+			"Name": "long转二进制",
 			"Valid": true
 		}, {
 			"Actions": [],
@@ -147,19 +171,31 @@
 			"Valid": true
 		}, {
 			"Actions": [
-				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" filename"]
-			],
-			"Name": "文件列表递归_文件名",
-			"Valid": true
-		}, {
-			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" relate"]
 			],
 			"Name": "文件列表递归_相对路径",
 			"Valid": true
 		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" absolute"]
+			],
+			"Name": "文件列表递归_绝对路径",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" absolute size"]
+			],
+			"Name": "文件列表递归_绝对路径_大小倒序",
+			"Valid": true
+		}, {
 			"Valid": true,
-			"Name": "文件列表_复制",
+			"Name": "文件列表_同级复制",
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_copy.bat relate"]
+			]
+		}, {
+			"Valid": true,
+			"Name": "文件列表_合并复制",
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_copy.bat"]
 			]
@@ -168,6 +204,12 @@
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\image_to_base64.bat \"%clipboard%\""]
 			],
 			"Name": "图片转base64",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" filename"]
+			],
+			"Name": "文件列表递归_文件名",
 			"Valid": true
 		}, {
 			"Actions": [],
