@@ -336,7 +336,7 @@ Remove-MpPreference -AttackSurfaceReductionOnlyExclusions "C:\Windows\"
 
 ### 文件管理器ftp快捷连接
 ```
-ftp://username:password@176.122.134.186/
+ftp://username:password@176.122.134.186:21/
 ```
 
 ### google

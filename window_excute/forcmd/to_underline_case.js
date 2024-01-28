@@ -4,9 +4,17 @@
 //已有package.json直接npm install即可
 //或单独npm install clipboardy
 
-const clipboardy = require('clipboardy');
-// clipboardy.writeSync('');
-var str = clipboardy.readSync();
+
+var str;
+var clipboardy;
+if(process.argv.length == 2){
+    clipboardy = require('clipboardy');
+    // clipboardy.writeSync('');
+    str = clipboardy.readSync();
+}else{
+    str = process.argv[2];
+}
+
 // console.log(str);
 if (str) {
   resultStr = str.replace(/[A-Z]/g, function(matchStr){
@@ -15,6 +23,11 @@ if (str) {
 }else{
   resultStr = "no input";
 }
-console.log(resultStr);
-clipboardy.writeSync(resultStr);
-console.log("已填充到剪贴板");
+
+if(process.argv.length == 2){
+    console.log(resultStr);
+    clipboardy.writeSync(resultStr);
+    console.log("已填充到剪贴板");
+}else{
+    process.stdout.write(resultStr);
+}

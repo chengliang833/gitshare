@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "clipboardy": "2.3.0"
+    "clipboardy": "2.3.0",
+    "jquery": "^3.7.1",
+    "jsdom": "^23.0.1"
   }
 }
