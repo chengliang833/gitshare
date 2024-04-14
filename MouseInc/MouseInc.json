@@ -67,6 +67,12 @@
 			"Valid": false
 		}, {
 			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js_one_line.bat eval_each_line \"%clipboard%\""]
+			],
+			"Name": "eval_单行",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js_one_line.bat to_camel_case \"%clipboard%\""]
 			],
 			"Name": "转驼峰命名_单行",
@@ -79,6 +85,12 @@
 			"Valid": true
 		}, {
 			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat eval_each_line"]
+			],
+			"Name": "eval_多行",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat to_camel_case"]
 			],
 			"Name": "转驼峰命名",
@@ -88,6 +100,12 @@
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat to_underline_case"]
 			],
 			"Name": "转下划线命名",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat line_dedup"]
+			],
+			"Name": "多行数据去重",
 			"Valid": true
 		}, {
 			"Actions": [
@@ -105,7 +123,25 @@
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat html_to_text"]
 			],
-			"Name": "html获取纯文本",
+			"Name": "html转纯文本_单行",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat html_line_to_text"]
+			],
+			"Name": "html转纯文本_剪贴板分行",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat html_in_excel_to_text"]
+			],
+			"Name": "html转纯文本_excel按行",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat html_in_excel_to_text wrap"]
+			],
+			"Name": "html转纯文本_excel按行(保留换行)",
 			"Valid": true
 		}, {
 			"Actions": [
@@ -203,7 +239,7 @@
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\image_to_base64.bat \"%clipboard%\""]
 			],
-			"Name": "图片转base64",
+			"Name": "文件转base64",
 			"Valid": true
 		}, {
 			"Actions": [

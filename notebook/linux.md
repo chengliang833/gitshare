@@ -33,6 +33,7 @@
     - [linux改host](#linux改host)
     - [linux改换行符](#linux改换行符)
     - [linux改静态IP](#linux改静态ip)
+    - [history操作](#history操作)
     - [linux关闭服务](#linux关闭服务)
       - [服务关闭开机自启](#服务关闭开机自启)
       - [25端口postfix关闭](#25端口postfix关闭)
@@ -70,6 +71,7 @@
     - [mysql查询数据库引擎](#mysql查询数据库引擎)
     - [mysql修改时区](#mysql修改时区)
     - [mysql连接数](#mysql连接数)
+    - [mysql rownum](#mysql-rownum)
     - [事务](#事务)
     - [mysqldump表复制和备份](#mysqldump表复制和备份)
     - [mysql查询修改编码及排序规则](#mysql查询修改编码及排序规则)
@@ -436,6 +438,16 @@ DNS2=114.114.114.114
 service network restart
 ```
 
+### history操作
+```
+//删除指定行
+history -d [行号]
+//删除当次会话的所有历史记录
+history -c
+//删除更早以前的所有历史记录
+cat /dev/null > ~/.bash_history
+```
+
 ### linux关闭服务
 
 #### 服务关闭开机自启
@@ -670,6 +682,12 @@ set GLOBAL max_connections=100;
 kill [processlist id]
 ```
 
+### mysql rownum
+```
+select id, (@row_number:=@row_number + 1) AS row_num from my_table, (select @row_number:= 0) a
+```
+
+
 ### 事务
 begin; commit;
 
@@ -877,7 +895,7 @@ sqlplus / as sysdba
 
 create tablespace ULANE datafile '/home/oracle/tablespace/ULANE.DBF' size 100M AUTOEXTEND ON NEXT 100M;
 create tablespace ULANE_IDX datafile '/home/oracle/tablespace/ULANE_IDX.DBF' size 100M AUTOEXTEND ON NEXT 100M;
-create user ulane identified by password DEFAULT TABLESPACE ULANE;
+create user ulane identified by "password" DEFAULT TABLESPACE ULANE;
 //alter user ulane default tablespace ULANE;
 grant connect,resource,dba to ulane;
 //创建错误重来
@@ -1264,8 +1282,12 @@ redis-5.0.0/utils/create-cluster
 ```
 
 #### redis单机启停
+```
 nohup src/redis-server ./redis.conf &
 src/redis-cli -p 6379 shutdown
+//ubuntu默认安装时
+/etc/init.d/redis-server start
+```
 
 #### redis查看
 ```
