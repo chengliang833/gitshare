@@ -37,6 +37,7 @@
     - [热键占用排查](#热键占用排查)
     - [清理垃圾步骤](#清理垃圾步骤)
     - [系统备份前序操作](#系统备份前序操作)
+    - [win10强制安装.net3.5](#win10强制安装net35)
     - [注册表 regedit](#注册表-regedit)
       - [查看历史运行缓存](#查看历史运行缓存)
     - [安全](#安全)
@@ -312,6 +313,14 @@ openark.exe
 1.垃圾清理
 2.关闭分页缓存文件
 3.关闭睡眠模式以减少文件
+
+### win10强制安装.net3.5
+```
+进入cmd,首行显示win10版本
+找到对应版本的系统镜像iso文件, 复制\sources\sxs到D盘\sources\sxs
+然后cmd执行下面的命令安装
+Dism /online /enable-feature /featurename:NetFx3 /All /Source:D:\sources\sxs /LimitAccess
+```
 
 ### 注册表 regedit
 #### 查看历史运行缓存
