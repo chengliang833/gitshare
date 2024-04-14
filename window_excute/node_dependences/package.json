@@ -5,6 +5,7 @@
   "dependencies": {
     "clipboardy": "2.3.0",
     "jquery": "^3.7.1",
-    "jsdom": "^23.0.1"
+    "jsdom": "^23.0.1",
+    "node-xlsx": "^0.23.0"
   }
 }

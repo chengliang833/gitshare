@@ -36,9 +36,11 @@
     - [bat添加到开始屏幕](#bat添加到开始屏幕)
     - [热键占用排查](#热键占用排查)
     - [清理垃圾步骤](#清理垃圾步骤)
+    - [onedrive网络异常修复](#onedrive网络异常修复)
     - [系统备份前序操作](#系统备份前序操作)
     - [注册表 regedit](#注册表-regedit)
       - [查看历史运行缓存](#查看历史运行缓存)
+      - [cmd默认UTF-8](#cmd默认utf-8)
     - [安全](#安全)
       - [windows defender关闭自动删除高威胁文件](#windows-defender关闭自动删除高威胁文件)
       - [不检查指定文件或文件夹](#不检查指定文件或文件夹)
@@ -68,6 +70,7 @@
       - [eclipse导入关联项目](#eclipse导入关联项目)
       - [eclipse插件Easy Console Grepper](#eclipse插件easy-console-grepper)
       - [eclipse搜索排除指定目录](#eclipse搜索排除指定目录)
+      - [eclipse关联项目外资源文件夹](#eclipse关联项目外资源文件夹)
     - [idea](#idea)
       - [idea打开始终选择项目](#idea打开始终选择项目)
       - [idea大小写不敏感](#idea大小写不敏感)
@@ -303,20 +306,31 @@ openark.exe
 ```
 
 ### 清理垃圾步骤
-1.软媒魔方垃圾清理
-2.windows磁盘清理
-3.DriverStore Explorer(效果不大)
-4.Windows Installer文件清理工具(效果不大)
+1. 软媒魔方垃圾清理
+2. windows磁盘清理
+3. DriverStore Explorer(效果不大)
+4. Windows Installer文件清理工具(效果不大)
+
+### onedrive网络异常修复
+1. Internet设置SSL2.0/SSL3.0均开启
+2. 卸载、重启电脑、重装onedrive
 
 ### 系统备份前序操作
-1.垃圾清理
-2.关闭分页缓存文件
-3.关闭睡眠模式以减少文件
+1. 垃圾清理
+2. 关闭分页缓存文件
+3. 关闭睡眠模式以减少文件
 
 ### 注册表 regedit
 #### 查看历史运行缓存
 ```
 计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store
+```
+
+#### cmd默认UTF-8
+```
+计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor
+字符串值
+autorun:chcp 65001
 ```
 
 ### 安全
@@ -481,6 +495,13 @@ http://jepfa.de/updatesites/ecg/repository
 #### eclipse搜索排除指定目录
 ```
 右键项目 properties||resource||resource filter||add filter
+```
+
+#### eclipse关联项目外资源文件夹
+```
+右键项目 properties||java build path||source||link source
+选择本地资源文件夹
+folder name src/main/resources-prod
 ```
 
 ### idea
