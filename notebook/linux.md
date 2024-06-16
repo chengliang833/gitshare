@@ -33,6 +33,7 @@
     - [linux改host](#linux改host)
     - [linux改换行符](#linux改换行符)
     - [history操作](#history操作)
+    - [查看系统版本](#查看系统版本)
     - [linux关闭服务](#linux关闭服务)
       - [服务关闭开机自启](#服务关闭开机自启)
       - [25端口postfix关闭](#25端口postfix关闭)
@@ -333,6 +334,7 @@ systemctl unmask firewalld
 ### curl post
 ```
 curl -k http://a/b -X POST -H 'Content-Type:application/json' -d '{"a":"b"}'
+curl -k http://a/b -X POST -H 'Content-Type:application/x-www-form-urlencoded' -d "a=v1&b=v2"
 //post大数据
 curl -k http://a/b -X POST -H 'Content-Type:application/json' -d@a.txt
 
@@ -415,6 +417,12 @@ history -d [行号]
 history -c
 //删除更早以前的所有历史记录
 cat /dev/null > ~/.bash_history
+```
+
+### 查看系统版本
+```
+uanme -a
+cat /etc/os-release
 ```
 
 ### linux关闭服务

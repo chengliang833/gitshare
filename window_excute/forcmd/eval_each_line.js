@@ -4,7 +4,6 @@
 //已有package.json直接npm install即可
 //或单独npm install clipboardy
 
-const {util} = require('./util');
 var resultStr;
 
 var str;
@@ -17,7 +16,7 @@ if(process.argv.length == 2){
 }
 
 if (str) {
-    let wrapInfo = util.checkWrapInfo(str);
+    let wrapInfo = checkWrapInfo(str);
     let strArr = str.split(wrapInfo.regex);
     let rArr = []
     strArr.forEach(o=>{
@@ -35,3 +34,29 @@ if(process.argv.length == 2){
 }else{
     process.stdout.write(resultStr);
 }
+
+
+
+
+
+// 复制于util, 单行计算时require耗时较大, 直接复制过来
+function checkWrapInfo(instr){
+  let regex;
+  let str;
+  if(/\r\n/g.test(instr)){
+      regex = /\r\n/g
+      str = '\r\n'
+  }else if(/\r/g.test(instr)){
+      regex = /\r/g
+      str = '\r'
+  }else{
+      regex = /\n/g
+      str = '\n'
+  }
+  return {regex, str};
+}
+
+
+
+
+

@@ -85,6 +85,12 @@
 			"Valid": true
 		}, {
 			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat json_no_space"]
+			],
+			"Name": "json去除空格换行",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat eval_each_line"]
 			],
 			"Name": "eval_多行",
@@ -109,15 +115,15 @@
 			"Valid": true
 		}, {
 			"Actions": [
-				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat json_no_space"]
-			],
-			"Name": "json去除空格换行",
-			"Valid": true
-		}, {
-			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat str_no_space"]
 			],
 			"Name": "去除换行及前后空格",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\doc_to_string.bat \"%clipboard%\""]
+			],
+			"Name": "获取word纯文本",
 			"Valid": true
 		}, {
 			"Actions": [
