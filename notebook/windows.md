@@ -682,8 +682,11 @@ github.com
 github.global.ssl.fastly.net
 //sourcetree代理
 127.0.0.1
-1080
-向git配置文件添加代理信息
+10809
+手动向.gitconfig配置文件添加代理信息
+[http]
+    proxy = http://127.0.0.1:10809
+
 ```
 #### git bash编码配置
 ```
