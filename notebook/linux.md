@@ -32,6 +32,7 @@
     - [linux隐藏顶栏底栏](#linux隐藏顶栏底栏)
     - [linux改host](#linux改host)
     - [linux改换行符](#linux改换行符)
+    - [linux改静态IP](#linux改静态ip)
     - [history操作](#history操作)
     - [查看系统版本](#查看系统版本)
     - [linux关闭服务](#linux关闭服务)
@@ -407,6 +408,36 @@ vi /etc/hosts
 ### linux改换行符
 ```
 sed -i 's/\r$//' filename.sh
+```
+
+### linux改静态IP
+```
+//centos
+cd /etc/sysconfig/network-scripts/
+vi ifcfg-ens33
+-- 比对差异
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=static
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=ens33
+UUID=a9452d55-5527-47d4-a288-097c50de31e3
+DEVICE=ens33
+ONBOOT=yes
+IPADDR=192.168.200.128
+NETMASK=255.255.255.0
+GATEWAY=192.168.204.2
+DNS1=192.168.204.2
+DNS2=114.114.114.114
+--
+service network restart
 ```
 
 ### history操作
