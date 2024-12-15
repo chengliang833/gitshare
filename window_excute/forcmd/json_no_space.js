@@ -13,10 +13,10 @@ if (str) {
     str = str.replaceAll("'", '"');
   }
   let obj = null
-  if(str.startsWith('"{\\"') || str.startsWith('"\[{\\"')){
-    obj = JSON.parse(JSON.parse('{"key":'+str+'}').key);
+  if(str.startsWith('"{') || str.startsWith('"\[{')){
+    obj = eval("obj = "+JSON.parse('{"key":'+str+'}').key);
   }else{
-    obj = JSON.parse(str);
+    obj = eval("obj = " + str);
   }
   resultStr = JSON.stringify(obj);
 }else{

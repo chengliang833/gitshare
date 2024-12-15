@@ -19,10 +19,8 @@ if (str) {
         endsWithWrap = true;
         o = o.substring(0, o.length-wrapStr.length);
     }
-    o = utilHtml.removeQuotamark(o);
-    o = utilHtml.wrapDiv(o);
-    o = utilHtml.retainTagStart(o);
-    let $strDom = $(o.replaceAll(/<\//g, '\n</'));
+    o = utilHtml.initFormat(o);
+    let $strDom = $(o);
     //console.log($strDom.html());
     //console.log($strDom.text());
     resultStr = utilHtml.domTextClearWrap($strDom.text())

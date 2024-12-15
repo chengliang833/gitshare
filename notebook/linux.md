@@ -251,6 +251,15 @@ V选中范围 :s/旧文本/新文本/g
 删除第9行到当前行内容：9, .d
 撤销 u
 前进 ctrl+r
+
+//查找相关
+\m （magic）除了 $ . * ^ 之外其他元字符都要加反斜杠
+\M （nomagic）除了 $ ^ 之外其他元字符都要加反斜杠
+\v （即 very magic 之意）：任何元字符都不用加反斜杠
+\V （即 very nomagic 之意）：任何元字符都必须加反斜杠
+且非捕获匹配为perl的方言，在vim中转换为：
+(?<=\W)\d{11}(?=\W)
+(\W@<=)\d{11}(\W@=)
 ```
 ### 清除文件内容
 \> filename
@@ -680,6 +689,7 @@ C:\A_install\mysql-5.6.19-winx64\bin>mysqladmin -uroot -p0123456 processlist
 //最大可连接数
 show variables like "max_connections";
 show processlist;
+SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST WHERE DB LIKE '%dbname%';
 show status like 'Threads%';
 
 //mysql修改连接数

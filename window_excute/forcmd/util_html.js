@@ -2,6 +2,12 @@
 const {util} = require('./util');
 
 const utilHtml = {
+  initFormat(str){
+    str = this.removeQuotamark(str);
+    str = this.wrapDiv(str);
+    str = this.retainTagStart(str);
+    return this.markNode(str);
+  },
   removeQuotamark(str){
     if(str.startsWith('"') && str.endsWith('"')){
       str = str.substring(1, str.length-1).replaceAll('""', '"');
@@ -14,8 +20,11 @@ const utilHtml = {
     }
     return str;
   },
+  markNode(str){
+    return str.replaceAll(/<\//g, '\t</');
+  },
   domTextClearWrap(str){
-    return str.replaceAll(/\n[​\n\s]*\n/g, '\n').replaceAll(/\n\s*/g, '\n').replaceAll(/^\s*/g, '');//  [​\n  中间有个符号，不知道是什么符    
+    return str.replaceAll(/[​\n\s]*\n/g, '\n').replaceAll(/\n[​\s]*/g, '\n').replaceAll(/^\s*/g, '').replaceAll(/[​\n\s]*\t/g, '\t');//  [​\n  中间有个符号，不知道是什么符    
   },
   retainTagStart(str){
     let $ = util.initJquery$();

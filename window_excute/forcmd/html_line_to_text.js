@@ -16,15 +16,13 @@ if (str) {
     console.log('共'+strArr.length+'个')
     for(let i=0,len=strArr.length; i<len; i++){
         let o = strArr[i];
-        o = utilHtml.removeQuotamark(o);
-        o = utilHtml.wrapDiv(o);
-        o = utilHtml.retainTagStart(o);
-        let $strDom = $(o.replaceAll(/<\//g, '\n</'));
+        o = utilHtml.initFormat(o);
+        let $strDom = $(o);
         let resultStr = utilHtml.domTextClearWrap($strDom.text())
         if(resultStr === ''){
             resultStr = util.retainCN(strArr[i]);
-        }else{
-            resultStr = resultStr.replaceAll(/\n/g, '  ')
+        //}else{
+        //    resultStr = resultStr.replaceAll(/\n/g, '\t')
         }
         resultStr = utilHtml.retainTagEnd(resultStr);
         resultArr.push(resultStr);
