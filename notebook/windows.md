@@ -115,6 +115,8 @@
       - [npmOpenSSL3.0解除限制](#npmopenssl30解除限制)
       - [npm阿里镜像](#npm阿里镜像)
       - [node执行js命令全局模块配置](#node执行js命令全局模块配置)
+    - [手机](#手机)
+      - [IOS移动LTE卡设置APN(蜂窝数据网络)](#ios移动lte卡设置apn蜂窝数据网络)
 
 # notebook
 ## windows
@@ -795,4 +797,23 @@ NODE_PATH=C:\Users\eshonulane\AppData\Roaming\npm\node_modules
 //mouseInc不支持读取系统变量，每次cmd直接执行
 set NODE_PATH=C:\Users\Administrator\AppData\Roaming\npm\node_modules
 ```
+
+### 手机
+#### IOS移动LTE卡设置APN(蜂窝数据网络)
+```
+蜂窝数据
+APN CMNET
+个人热点
+APN CMNET
+
+另外有个设置后网速慢
+APN CMMTM
+LTE设置
+APN CMITO
+个人热点
+APN CMITO
+```
+
+
+
 
