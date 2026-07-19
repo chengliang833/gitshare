@@ -6,6 +6,11 @@
 
 const clipboardy = require('clipboardy');
 // clipboardy.writeSync('');
+let sortKey = 'false';
+if(process.argv.length == 3){
+  sortKey = process.argv[2];
+}
+let resultStr;
 var str = clipboardy.readSync();
 // console.log(str);
 if (str) {
@@ -18,7 +23,13 @@ if (str) {
   }else{
     obj = eval("obj = " + str);
   }
-  resultStr = JSON.stringify(obj);
+  console.log("排序KEY:", sortKey);
+  if(sortKey == 'true'){
+    const {util} = require('./util');
+    resultStr = util.objToStrBySort(obj);
+  }else{
+    resultStr = JSON.stringify(obj);
+  }
 }else{
   resultStr = "no input";
 }

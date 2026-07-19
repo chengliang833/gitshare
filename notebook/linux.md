@@ -43,7 +43,7 @@
       - [dnsmasq关闭](#dnsmasq关闭)
   - [git](#git)
     - [gitlab安装](#gitlab安装)
-    - [git更新覆盖本地](#git更新覆盖本地)
+    - [git常用命令](#git常用命令)
   - [tomcat](#tomcat)
     - [tomcat静态资源配置](#tomcat静态资源配置)
     - [tomcat启动隐藏](#tomcat启动隐藏)
@@ -63,6 +63,7 @@
     - [加入本地maven仓库](#加入本地maven仓库)
     - [发布在线maven包](#发布在线maven包)
     - [项目单独配置仓库](#项目单独配置仓库)
+    - [idea使用高版本maven禁用https](#idea使用高版本maven禁用https)
   - [数据库](#数据库)
     - [oracle](#oracle)
       - [oracle-\>mysql文件结构转换](#oracle-mysql文件结构转换)
@@ -114,6 +115,7 @@
     - [小于等于转义](#小于等于转义)
     - [微信公众号code跳转](#微信公众号code跳转)
     - [base64图片](#base64图片)
+    - [fastjson指定List等泛型](#fastjson指定list等泛型)
   - [前端](#前端)
     - [el-tooltip有时不显示](#el-tooltip有时不显示)
   - [eclipse](#eclipse)
@@ -130,6 +132,8 @@
     - [nginx](#nginx)
       - [nginx启停](#nginx启停)
       - [nginx重写地址](#nginx重写地址)
+    - [windows相关](#windows相关)
+      - [激活服务](#激活服务)
 
 # notebook-linux
 ## 基本命令
@@ -203,6 +207,7 @@ journalctl --vacuum-size=1G
 ### frp启动
 ```
 nohup frp_0.35.1_linux_amd64/frps -c frp_0.35.1_linux_amd64/frps.ini > frps.log 2>&1 &
+nohup ./frps -c frps.ini > frps.log 2>&1 &
 nohup frp_0.35.1_linux_amd64/frpc -c frp_0.35.1_linux_amd64/frpc.ini > frpc.log 2>&1 &
 ```
 
@@ -214,6 +219,8 @@ find ./transaction-all-2020-07-16* -type f |xargs grep -l 'content'
 find ./ -regex "\.\/t.*"
 grep筛选文件内容a
 grep -a "04-11" catalina.out > catalina.2018-04-11.out
+//按或筛选, 如果是and考虑用 | 继续grep
+grep -e "条件1" -e "条件2" catalina.out > catalina.2018-04-11.out
 
 //查询内容所在行数
 grep -n "04-11" catalina.out
@@ -254,9 +261,9 @@ V选中范围 :s/旧文本/新文本/g
 
 //查找相关
 \m （magic）除了 $ . * ^ 之外其他元字符都要加反斜杠
-\M （nomagic）除了 $ ^ 之外其他元字符都要加反斜杠
-\v （即 very magic 之意）：任何元字符都不用加反斜杠
-\V （即 very nomagic 之意）：任何元字符都必须加反斜杠
+\M （nomagic）除了 $ ^ 之外其他元字符都不加反斜杠
+\v ：任何元字符都必须加反斜杠(全部都要反斜杠才转义)
+\V ：任何元字符都不加反斜杠
 且非捕获匹配为perl的方言，在vim中转换为：
 (?<=\W)\d{11}(?=\W)
 (\W@<=)\d{11}(\W@=)
@@ -269,6 +276,9 @@ V选中范围 :s/旧文本/新文本/g
 openssl req -new -x509 -newkey rsa:2048 -keyout CA.key -out CA.cert
 //-out CA.pem
 openssl rsa -in CA.key  -out CA_no_pwd.key
+
+//直接不加密码
+openssl req -new -x509 -newkey rsa:2048 -keyout CA.key -out CA.cert -nodes
 ```
 
 ### linux定时任务
@@ -512,11 +522,104 @@ nohup gitlab-ctl reconfigure &
 gitlab-ctl stop
 ```
 
-### git更新覆盖本地
+### git常用命令
 ```
-git fetch --all
-git reset --hard origin/master
+//查看历史提交记录
+git log --graph --oneline
+git log --author='chengliang'
+
+//--------暂存
+//查看当前状态, 暂存
+git status
+git restore --stage docs/a.java
+git add docs/a.java
+//暂存所有
+git add .
+git commit -m "提交描述"
+
+//比较单个文件 或比较指定提交
+git diff HEAD -- <file_path>
+git diff <commit_id> -- <file_path>
+
+//取消所有暂存
+git restore --staged .
+
+//保留所有改动, 重置到指定提交
+git reset -q --mixed 8bf60520fc1db46becc647a292592a416c82f4f3
+
+//强行丢弃所有改动, 重置到指定提交
+git reset -q --hard 3e3bb718f8eeeda65621326d486859bdee820710
+
+//暂存单个文件
+git add --docs/a.md
+
+//重置单个文件
+git checkout -- docs/a.md
+
+//查看所有所有未追踪文件和文件夹-并重置, d是directory
+//查看
+git clean -nd
+//重置
+git clean -fd
+
+//查看索引列表
+git stash list
+
+//新增储藏
+git stash save local_temp
+
+//应用储藏区, 按索引序列号执行
+git stash apply stash@{0}
+
+//遴选 参数为提交的sha
+git cherry-pick -x e45652d3be1b9b49162b850026c37121781ed9ab
+
+//--------分支
+//查看本地分支 -a所有 -r 远端
+git branch
+git branch -a
+
+//拉取远端当前分支 并直接 pull 合并
+git fetch
+git pull
+
+//只下载其他分支, 不合并
+git fetch origin uat:uat
+
+//切换分支
+git checkout uat
+
+//检出远端分支并关联创建本地分支
+git checkout -b uat origin/uatheckout 
+
+//合并其他分支到当前分支
+git merge dev
+
+//推送分支
+git push -v origin uat:uat
+
+//强制推送
+git push -v --force-with-lease origin uat:uat
+
+//新建分支但不切换
+git branch dev-20260703 dev-20260702
+
+//删除分支
+git branch -d dev-20260703
+
+//----------------git worktree list
+//查询列表
+git worktree list
+
+//新增worktree
+  -- 文件夹名 基础分支名
+git worktree add ../aiagent-main-tree-uat/dev-duplicate dev-20260703
+
+//删除
+git worktree remove ../aiagent-main-tree-uat/dev-duplicate
+
 ```
+
 ## tomcat
 ### tomcat静态资源配置
 ```
@@ -597,7 +700,22 @@ mvn install:install-file -Dfile=G:\ojdbc14-1.0.jar -DgroupId=com.oracle -Dartifa
 ```
 ### 发布在线maven包
 ```
+//新版本要带"", 不然无法解析, 注意路径 域名带/nexus, IP不带
 mvn deploy:deploy-file -DgroupId=top.ulane -DartifactId=jdbc -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=D:\Develop\Install\eclipse_pristine\workspace\jdbc\target\jdbc.jar -Durl=http://username:password@nexus.ulane.top/nexus/content/repositories/snapshots
+mvn deploy:deploy-file "-DgroupId=top.ulane" "-DartifactId=jdbc" "-Dversion=0.0.1-SNAPSHOT" "-Dpackaging=jar" "-Dfile=D:\Develop\Install\eclipse_pristine\workspace\jdbc\target\jdbc.jar" "-Durl=http://username:password@192.2.3.4:8081/content/repositories/snapshots"
+mvn deploy:deploy-file -s "C:\Users\Administrator\.m2\settings2.xml" "-DgroupId=top.ulane" "-DartifactId=jdbc" "-Dversion=1.5.1-SNAPSHOT" "-Dpackaging=jar" "-Dfile=jdbc.jar" "-Durl=http://nexus.ulane.top/nexus/content/repositories/snapshots/" "-DrepositoryId=snapshots" "-DgeneratePom=true"
+
+//本地目录需要pom.xml文件
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>top.ulane</groupId>
+    <artifactId>jdbc</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+</project>
 ```
 
 ### 项目单独配置仓库
@@ -631,6 +749,15 @@ pom.xml文件增加
     </pluginRepository>
 </pluginRepositories>
 ```
+
+### idea使用高版本maven禁用https
+```
+//Build,Execution.Deployment --> Build Tools --> Maven --> Importing : VM options for importer
+//Build,Execution.Deployment --> Build Tools --> Maven --> Runner: VM Options
+-Dmaven.resolver.transport=wagon -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+```
+
+
 
 ## 数据库
 ### oracle
@@ -707,7 +834,22 @@ select id, (@row_number:=@row_number + 1) AS row_num from my_table, (select @row
 
 
 ### 事务
-begin; commit;
+```
+begin;
+commit;
+rollback;
+
+//mysql
+tee curversion.log;
+use [dbname];
+begin;
+...
+source [sqlname].sql;
+...
+commit;
+notee
+exit
+```
 
 ### mysqldump表复制和备份
 ```
@@ -789,6 +931,16 @@ systemctl enable docker
 
 ### docker浏览 搜索 下载 删除镜像，容器
 ```
+//设置镜像服务
+sudo vi /etc/docker/daemon.json
+{
+  "registry-mirrors": [
+    "https://docker.ulane.top"
+  ]
+}
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+//通用配置
 docker images
 docker search
 docker pull
@@ -810,11 +962,16 @@ docker cp ./broker.conf drmqnamesrv:/opt/rocketmq-4.3.2/conf/broker.conf
 
 ### docker导入导出重命名
 ```
+//导入导出容器
 docker save cd14cecfdb3a > ./docker_jenkins_2.60.3.tar
 docker load < docker_jenkins_2.60.3.tar
 docker tag cd14cecfdb3a jenkins:2.60.3
 docker export tomcat > ./tomcat-jenkins-2.244.tar
 docker import tomcat-jenkins-2.244.tar tomcat-jenkins:2.244
+
+//或者只导入导出镜像
+docker save calciumion/new-api:latest | gzip > new-api.tar.gz
+docker load -i new-api.tar.gz
 ```
 
 ### docker修改提交镜像并发布
@@ -1005,14 +1162,14 @@ docker run -itd -p 80:80 -p 443:443 -e TZ="Asia/Shanghai" \
 --name nginx nginx:1.21.5
 // --net=host 
 
-docker run -itd -p 80:80 -p 443:443 -e TZ="Asia/Shanghai" \
+docker run -itd -p 80:80 -p 443:443 -p 29585:29585 -e TZ="Asia/Shanghai" \
 -v /data/nginx/nginx.conf:/etc/nginx/nginx.conf \
 -v /data/nginx/conf.d:/etc/nginx/conf.d \
 -v /data/nginx/ssl:/etc/nginx/ssl \
 -v /data/nginx/www:/home/nginx/www \
 -v /data/download:/home/nginx/download \
 --restart always \
---name my_nginx nginx:latest
+--name nginx nginx:latest
 ```
 
 #### docker启动nexus 关联本地数据
@@ -1183,6 +1340,11 @@ https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx663fee511c625a07&res
 <img src="data:image/jpg;base64," />
 ```
 
+### fastjson指定List等泛型
+```
+List<String> listes = JSON.parseObject(str, new TypeReference<List<String>>(){});
+```
+
 ## 前端
 ### el-tooltip有时不显示
 元素内部必须有元素，div或i，纯文本有可能也不显示
@@ -1330,6 +1492,12 @@ sbin/nginx -s reload
 rewrite ^/path(.*)$ $1 break;
 
 
+
+### windows相关
+#### 激活服务
+```
+vlmcsd
+```
 
 
 
