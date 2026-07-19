@@ -8,7 +8,6 @@
     - [B7在E2到E240的出现次数](#b7在e2到e240的出现次数)
     - [bc Beyond Compare过期提示](#bc-beyond-compare过期提示)
     - [windows端口映射](#windows端口映射)
-    - [查看端口占用](#查看端口占用)
     - [建立软链接](#建立软链接)
     - [win+R设置windows自动登录](#winr设置windows自动登录)
     - [双指触控修改 regedit](#双指触控修改-regedit)
@@ -39,6 +38,8 @@
     - [onedrive网络异常修复](#onedrive网络异常修复)
     - [系统备份前序操作](#系统备份前序操作)
     - [win10强制安装.net3.5](#win10强制安装net35)
+    - [系统](#系统)
+      - [查看CPU占用TOP N](#查看cpu占用top-n)
     - [注册表 regedit](#注册表-regedit)
       - [查看历史运行缓存](#查看历史运行缓存)
       - [cmd默认UTF-8](#cmd默认utf-8)
@@ -61,6 +62,9 @@
       - [重置网络](#重置网络)
       - [修改cmd窗口大小(按行数、列数)](#修改cmd窗口大小按行数列数)
       - [临时安装（如msi）](#临时安装如msi)
+      - [查看端口占用并清除](#查看端口占用并清除)
+      - [查看服务-PID](#查看服务-pid)
+      - [防休眠powershell单行脚本](#防休眠powershell单行脚本)
     - [eclipse](#eclipse)
       - [eclipse界面布局地址](#eclipse界面布局地址)
       - [eclipse安装lombook](#eclipse安装lombook)
@@ -83,6 +87,9 @@
       - [查看所有关联类](#查看所有关联类)
       - [tomcat打印语言](#tomcat打印语言)
       - [默认不展开方法体](#默认不展开方法体)
+      - [idea设置快捷键](#idea设置快捷键)
+      - [隔离项目内的独立项目](#隔离项目内的独立项目)
+      - [idea开启查看本地变动](#idea开启查看本地变动)
     - [vscode](#vscode)
       - [滚动一页](#滚动一页)
       - [全选相似字段](#全选相似字段)
@@ -111,10 +118,13 @@
       - [备份位置](#备份位置)
     - [office](#office-1)
       - [正则宏替换](#正则宏替换)
-    - [nodejs](#nodejs)
+    - [nodejs(nvm)](#nodejsnvm)
+      - [NVM基础命令](#nvm基础命令)
       - [npmOpenSSL3.0解除限制](#npmopenssl30解除限制)
       - [npm阿里镜像](#npm阿里镜像)
       - [node执行js命令全局模块配置](#node执行js命令全局模块配置)
+    - [网络](#网络)
+      - [Mobaxterm 端口转发(SSH网络穿透)](#mobaxterm-端口转发ssh网络穿透)
     - [手机](#手机)
       - [IOS移动LTE卡设置APN(蜂窝数据网络)](#ios移动lte卡设置apn蜂窝数据网络)
 
@@ -162,9 +172,6 @@ netsh interface portproxy delete v4tov4 listenport=10809 listenaddress=192.168.1
 netsh interface portproxy delete v4tov4 listenport=10808 listenaddress=192.168.137.1
 netsh interface portproxy show all
 ```
-
-### 查看端口占用
-netstat -ano | findstr "端口号"
 
 ### 建立软链接
 ```
@@ -287,6 +294,8 @@ smtp-mail.outlook.com
 
 ### JDK1.8默认地址
 C:\ProgramData\Oracle\Java\javapath;
+C:\Program Files (x86)\Common Files\Oracle\Java\javapath;
+
 
 ### 文件夹别名
 目录下新增desktop.ini，对应文件夹更改图标后复原，ansi编码
@@ -329,6 +338,17 @@ openark.exe
 找到对应版本的系统镜像iso文件, 复制\sources\sxs到D盘\sources\sxs
 然后cmd执行下面的命令安装
 Dism /online /enable-feature /featurename:NetFx3 /All /Source:D:\sources\sxs /LimitAccess
+```
+
+### 系统
+#### 查看CPU占用TOP N
+```
+ps | sort cpu -Descending | select -First 10
+或
+powershell "Get-Process | Sort-Object CPU -Descending | Select-Object -First 10 Name, CPU"
+
+//强制停止对应应用
+Stop-Process -Name "msedgewebview2" -Force
 ```
 
 ### 注册表 regedit
@@ -461,6 +481,22 @@ mode con cols=237 lines=62
 3.msiexec /package "安装文件的全路径"
 ```
 
+#### 查看端口占用并清除
+```
+netstat -ano | findstr "端口号"
+tasklist | findstr "PID"
+taskkill /f /t /im 任务名.exe
+```
+
+#### 查看服务-PID
+tasklist /svc /FI "PID eq [PID号]"
+
+#### 防休眠powershell单行脚本
+```
+$w=New-Object -ComObject Wscript.Shell; while (1) { $w.SendKeys("{F15}"); Write-Host "================" -ForegroundColor Green; Write-Host "[$(Get-Date -Format 'HH:mm:ss')] 电脑防休眠脉冲已触发..." -ForegroundColor Cyan; Start-Sleep -Seconds 60 }
+```
+
+
 ### eclipse
 #### eclipse界面布局地址
 D:\Develop\Install\eclipse_pristine\workspace\.metadata\.plugins\org.eclipse.e4.workbench<br/>
@@ -575,6 +611,27 @@ logback.xml编码改为GBK //可改自己日志中打印的文本编码(跟随�
 ```
 Editor||General||Code Folding 勾选 Method bodies
 配合ctrl shift - 和 ctrl shift = 手动折叠和展开
+```
+
+#### idea设置快捷键
+```
+上下翻页 pageup pagedown: ctrl+mouse alt+mouse
+delete line: ctrl+alt+d
+```
+
+#### 隔离项目内的独立项目
+```
+若单独打开inner-project后idea提示class未找到
+设置File||Project Structure||Modules||[out-project-name]
+选择inner-project
+设置Mark as: 选中Excluded
+保存并重启IDEA
+删除inner-project的.idea文件夹重新单独导入
+```
+
+#### idea开启查看本地变动
+```
+version control| commit | 取消勾选 Use non-modal commit interface
 ```
 
 ### vscode
@@ -701,7 +758,7 @@ github.global.ssl.fastly.net
 ```
 #### git bash编码配置
 ```
-//两个都要对应且和文件内容编码一致，才能显示正常
+//两个都要对应且和文件内容编码一致，才能显示正常，显示中文
 Options||Text||characterset
 UTF-8/GBK
 Options||Window||UI language
@@ -778,7 +835,15 @@ Private Sub RegExp_Replace()
 End Sub
 ```
 
-### nodejs
+### nodejs(nvm)
+#### NVM基础命令
+```
+//版本列表
+nvm list
+//切换版本
+nvm use 16.19.1
+```
+
 #### npmOpenSSL3.0解除限制
 ```
 运行命令前设置
@@ -796,6 +861,15 @@ npm config set registry https://registry.npm.taobao.org<br/>
 NODE_PATH=C:\Users\eshonulane\AppData\Roaming\npm\node_modules
 //mouseInc不支持读取系统变量，每次cmd直接执行
 set NODE_PATH=C:\Users\Administrator\AppData\Roaming\npm\node_modules
+```
+
+### 网络
+#### Mobaxterm 端口转发(SSH网络穿透)
+```
+右上角设置-Tools-MobaSSHTunnel
+本地访问端口3306
+经SSHserver链接配置-账号密码+端口
+SSH登录后访问的地址+密码
 ```
 
 ### 手机

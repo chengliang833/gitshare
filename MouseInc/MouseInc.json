@@ -91,6 +91,12 @@
 			"Valid": true
 		}, {
 			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat json_no_space true"]
+			],
+			"Name": "json去除空格换行并排序KEY",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat eval_each_line"]
 			],
 			"Name": "eval_多行",
@@ -112,6 +118,12 @@
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat line_dedup"]
 			],
 			"Name": "多行数据去重",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_js.bat line_order"]
+			],
+			"Name": "多行数据升序",
 			"Valid": true
 		}, {
 			"Actions": [
@@ -207,6 +219,16 @@
 			"Valid": true
 		}, {
 			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\execute_java.bat export_db"]
+			],
+			"Name": "数据库导出",
+			"Valid": true
+		}, {
+			"Actions": [],
+			"Name": "数据",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list.bat \"%clipboard%\""]
 			],
 			"Name": "文件列表",
@@ -230,17 +252,17 @@
 			"Name": "文件列表递归_绝对路径_大小倒序",
 			"Valid": true
 		}, {
-			"Valid": true,
-			"Name": "文件列表_同级复制",
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_copy.bat relate"]
-			]
+			],
+			"Name": "文件列表_同级复制",
+			"Valid": true
 		}, {
-			"Valid": true,
-			"Name": "文件列表_合并复制",
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_copy.bat"]
-			]
+			],
+			"Name": "文件列表_合并复制",
+			"Valid": true
 		}, {
 			"Actions": [
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\image_to_base64.bat \"%clipboard%\""]
@@ -252,6 +274,12 @@
 				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\file_list_deep.bat \"%clipboard%\" filename"]
 			],
 			"Name": "文件列表递归_文件名",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "D:\\Develop\\work\\developfile\\window_excute\\forcmd\\start_ftp_server.bat \"%clipboard%\""]
+			],
+			"Name": "FTP服务",
 			"Valid": true
 		}, {
 			"Actions": [],
@@ -838,7 +866,7 @@
 			"Sign": "DOWN-LEFT",
 			"Valid": true
 		}],
-		"Match": ["notepad.exe"],
+		"Match": ["notepad.exe", "Foxmail.exe"],
 		"Name": "ALT+F4"
 	}],
 	"MatchGlobal": [{

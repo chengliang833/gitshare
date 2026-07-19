@@ -17,6 +17,7 @@ if (str) {
     for(let i=0,len=strArr.length; i<len; i++){
         let o = strArr[i];
         o = utilHtml.initFormat(o);
+        //console.log(o)
         let $strDom = $(o);
         let resultStr = utilHtml.domTextClearWrap($strDom.text())
         if(resultStr === ''){

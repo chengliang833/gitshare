@@ -20,7 +20,15 @@ if (str) {
     let strArr = str.split(wrapInfo.regex);
     let rArr = []
     strArr.forEach(o=>{
-        rArr.push(o + '=' + eval(o));
+        if(o == null || o === ''){
+            rArr.push(o);
+        }else{
+            try{
+                rArr.push(o + '=' + eval(o));
+            } catch (e){
+                rArr.push(o);
+            }            
+        }
     })
     resultStr = rArr.join(wrapInfo.str);
 }else{

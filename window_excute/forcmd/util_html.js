@@ -31,14 +31,15 @@ const utilHtml = {
     //<font style="text-decoration: underline; color:#25B7FE" onclick="clickFun()">这里</font>
     let regInfos = [{reg:/<img(.*?)<\/img>/gs, tag:'img', attrs:['alt','title','t']}, 
                     {reg:/<img(.*?)\/>/gs, tag:'img', attrs:['alt','title','t']}, 
-                    {reg:/<font(.*?)<\/font>/gs, tag:'font', attrs:['onclick']}
+                    {reg:/<font(.*?)<\/font>/gs, tag:'font', attrs:['onclick']},
+                    {reg:/<br>/gs, tag:'br'}
                     ];
     for(let i=0,len=regInfos.length; i<len; i++){
       let regInfo = regInfos[i];
       let match = str.match(regInfo.reg);
       if(match){
         match.forEach(o=>{
-          // console.log(o);
+          //console.log(o);
           let $tag = $(o);
           let tagText = $tag.text();
           let toStr = '&__lt;'+regInfo.tag + ' ';
@@ -59,6 +60,8 @@ const utilHtml = {
               toStr += '/&__gt;';
             }
             str = str.replace(o, toStr);
+          }else{
+            str = str.replace(o, toStr + '/&__gt;');
           }
         })
       }
