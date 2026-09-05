@@ -540,6 +540,8 @@ git commit -m "提交描述"
 //比较单个文件 或比较指定提交
 git diff HEAD -- <file_path>
 git diff <commit_id> -- <file_path>
+//difftool比较两个版本示例
+git difftool 1ce75e9012452c08198b797f3fd015c8b82f039e 582e5440dd9cc67d269fadb639898f88b43e3b96 .env
 
 //取消所有暂存
 git restore --staged .
@@ -590,7 +592,7 @@ git fetch origin uat:uat
 git checkout uat
 
 //检出远端分支并关联创建本地分支
-git checkout -b uat origin/uatheckout 
+git checkout -b uat origin/uat
 
 //合并其他分支到当前分支
 git merge dev
@@ -603,6 +605,9 @@ git push -v --force-with-lease origin uat:uat
 
 //新建分支但不切换
 git branch dev-20260703 dev-20260702
+
+//重命名
+git branch -m fromname toname
 
 //删除分支
 git branch -d dev-20260703
@@ -701,6 +706,7 @@ mvn install:install-file -Dfile=G:\ojdbc14-1.0.jar -DgroupId=com.oracle -Dartifa
 ### 发布在线maven包
 ```
 //新版本要带"", 不然无法解析, 注意路径 域名带/nexus, IP不带
+mvn deploy:deploy-file -DpomFile="pom.xml" -Dfile="jdbc.jar" -Durl=http://username:password@nexus.ulane.top/nexus/content/repositories/snapshots
 mvn deploy:deploy-file -DgroupId=top.ulane -DartifactId=jdbc -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=D:\Develop\Install\eclipse_pristine\workspace\jdbc\target\jdbc.jar -Durl=http://username:password@nexus.ulane.top/nexus/content/repositories/snapshots
 mvn deploy:deploy-file "-DgroupId=top.ulane" "-DartifactId=jdbc" "-Dversion=0.0.1-SNAPSHOT" "-Dpackaging=jar" "-Dfile=D:\Develop\Install\eclipse_pristine\workspace\jdbc\target\jdbc.jar" "-Durl=http://username:password@192.2.3.4:8081/content/repositories/snapshots"
 mvn deploy:deploy-file -s "C:\Users\Administrator\.m2\settings2.xml" "-DgroupId=top.ulane" "-DartifactId=jdbc" "-Dversion=1.5.1-SNAPSHOT" "-Dpackaging=jar" "-Dfile=jdbc.jar" "-Durl=http://nexus.ulane.top/nexus/content/repositories/snapshots/" "-DrepositoryId=snapshots" "-DgeneratePom=true"
@@ -714,7 +720,7 @@ mvn deploy:deploy-file -s "C:\Users\Administrator\.m2\settings2.xml" "-DgroupId=
     <groupId>top.ulane</groupId>
     <artifactId>jdbc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 </project>
 ```
 

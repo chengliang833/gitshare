@@ -223,10 +223,26 @@ ctrl + alt + num+ 开始自定义快捷键(单击位置设置)
 ```
 
 ### WiFi管理
+```
 1. Win+X||命令提示符(管理员)
 2. 总览 输入netsh wlan show profiles
 3. 查看 输入netsh wlan show profile name= "..." key=clear
 4. 删除 输入netsh wlan delete profile name= "..."
+
+//可视化界面不可用时通过命令行切换
+//显示可用列表
+netsh wlan show networks
+//配置账号密码并查看列表 (隐藏的网络:加配置 <nonBroadcast>true</nonBroadcast>)
+netsh wlan add profile filename="D:\My_Hire\temp\WLAN-ulane_5G.xml" user=all
+netsh wlan show profiles
+//连接到指定wifi并查看连接状态
+netsh wlan connect name="ulane_5G"
+netsh wlan show interfaces
+//主动断开wifi
+netsh wlan disconnect
+//导出wifi配置文件
+netsh wlan export profile name="ulane_5G" folder=. key=clear
+```
 
 ### windows清除默认打开方式
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.dff\OpenWithList<br/>
