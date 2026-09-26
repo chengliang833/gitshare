@@ -536,6 +536,8 @@ git add docs/a.java
 //暂存所有
 git add .
 git commit -m "提交描述"
+//绕过提交勾子
+git commit -m "提交描述" -q --no-verify
 
 //比较单个文件 或比较指定提交
 git diff HEAD -- <file_path>
@@ -593,6 +595,9 @@ git checkout uat
 
 //检出远端分支并关联创建本地分支
 git checkout -b uat origin/uat
+
+//按指定提交创建分支
+git checkout -b dev-20260820 d89025341e7bcd75ab1d0938058da8ba4ca13f83
 
 //合并其他分支到当前分支
 git merge dev
